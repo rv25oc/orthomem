@@ -8,23 +8,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.crashlytics.android.Crashlytics;
 import com.utilisateur.orthomem.R;
-import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
 import com.utilisateur.orthomem.controllers.fragments.AddListFragment;
 import com.utilisateur.orthomem.controllers.fragments.FavoriteFragment;
 import com.utilisateur.orthomem.controllers.fragments.MyListsFragment;
 import com.utilisateur.orthomem.controllers.fragments.ParametersFragment;
-import com.utilisateur.orthomem.model.Exercice;
 
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity /*implements MyListsFragment.OnButtonClickedListener*/ {
