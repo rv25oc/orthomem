@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">orthomem</string>
+    <string name="title_favorite">Accueil</string>
+    <string name="title_mylists">Mes listes</string>
+    <string name="title_mylist">Ma liste</string>
+    <string name="title_addlist">Nouvelle liste</string>
+    <string name="title_parameters">Paramètres</string>
+    <string name="label_myaccount">Mon compte</string>
+    <string name="label_updpassword">Modifier mon mot de passe</string>
+    <string name="label_preferences">Préférences</string>
+    <string name="label_logout">Se déconnecter</string>
+</resources>
