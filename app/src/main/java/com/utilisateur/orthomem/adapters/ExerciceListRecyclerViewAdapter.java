@@ -17,26 +17,6 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
     private List<Exercice> mExercicesList;
 
 
-// - - - - - - - - -
-// GESTION DU LISTENER
-// - - - - - - - - -
-
-
-    public interface FavoriteIconListener {
-        void onClickFavoriteIcon(int position); // 1 - Create interface for callback
-    }
-
-    private final FavoriteIconListener mCallback; // 2 - Declaring callback
-
-
-    //ajouter un constructeur prenant en entrée une liste + le callback
-    public ExerciceListRecyclerViewAdapter(List<Exercice> ExcercicesList, FavoriteIconListener callback) {
-        this.mExercicesList = ExcercicesList;
-        this.mCallback = callback;// 3 - Passing an instance of callback through constructor
-    }
-
-
-
     // - - - - - - - - -
 // GESTION DU VIEWHOLDER
 // - - - - - - - - -
@@ -67,5 +47,23 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
 
     public Exercice getExerciceFromPosition(int position){
         return this.mExercicesList.get(position);
+    }
+
+    // - - - - - - - - -
+// GESTION DU LISTENER
+// - - - - - - - - -
+
+
+    public interface FavoriteIconListener {
+        void onClickFavoriteIcon(int position); // 1 - Create interface for callback
+    }
+
+    private final FavoriteIconListener mCallback; // 2 - Declaring callback
+
+
+    //ajouter un constructeur prenant en entrée une liste + le callback
+    public ExerciceListRecyclerViewAdapter(List<Exercice> ExcercicesList, FavoriteIconListener callback) {
+        this.mExercicesList = ExcercicesList;
+        this.mCallback = callback;// 3 - Passing an instance of callback through constructor
     }
 }

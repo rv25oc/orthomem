@@ -26,6 +26,15 @@ public class ParametersFragment extends Fragment {
         return inflater.inflate(R.layout.activity_parameters, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+
+    }
+
+
     //TEST HG - LANCER UNE NOUVELLE ACTIVITE AU CLIC
     //Set onClickListener to Exercicie label -- A TERME L'UNE DES LIGNES DE LA LISTE
     //result.findViewById(R.id.myLists_MyListButton).setOnClickListener(this);

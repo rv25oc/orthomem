@@ -1,12 +1,40 @@
 <resources>
-    <string name="app_name">orthomem</string>
-    <string name="title_favorite">Accueil</string>
-    <string name="title_mylists">Mes listes</string>
-    <string name="title_mylist">Ma liste</string>
-    <string name="title_addlist">Nouvelle liste</string>
-    <string name="title_parameters">Paramètres</string>
-    <string name="label_myaccount">Mon compte</string>
-    <string name="label_updpassword">Modifier mon mot de passe</string>
-    <string name="label_preferences">Préférences</string>
-    <string name="label_logout">Se déconnecter</string>
+
+    <string name="app_name">Orthomem</string>
+
+    <!-- BottomNAvigationView-->
+    <string name="favorite_menu">Mes favoris</string>
+    <string name="mylists_menu">Mes listes</string>
+    <string name="addlist_menu">Nouvelle liste</string>
+    <string name="parameters_menu">Paramètres</string>
+
+    <!-- Favorite Fragment-->
+    <string name="favorite_title">Mes favoris</string>
+    <string name="favorite_status">Bienvenue </string>
+
+    <!-- Mylists Fragment-->
+    <string name="mylists_title">Mes listes</string>
+    <string name="MyLists_status">Bienvenue </string>
+
+    <!-- Mylist Fragment-->
+    <string name="mylist_title">Ma liste</string>
+    <string name="myList_status">Bienvenue </string>
+    <string name="myList_name">myList_name_init</string>
+
+    <!-- AddList Fragment-->
+    <string name="addlist_title">Nouvelle liste</string>
+    <string name="addList_status">Bienvenue </string>
+
+    <!-- Parameters Fragment-->
+    <string name="parameters_title">Paramètres</string>
+    <string name="parameters_status">Bienvenue </string>
+    <string name="myaccount_label">Mon compte</string>
+    <string name="updpassword_label">Modifier mon mot de passe</string>
+    <string name="preferences_label">Préférences</string>
+    <string name="logout_label">Se déconnecter</string>
+
+    <!-- Dependencies requierments-->
+    <string name="auth_failed">Authentication failed</string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="signed_out">ORTHOMEM : Bien déconnecté. Vous pouvez poser votre smartphone et reprendre une activité normale. ^^ </string>
 </resources>

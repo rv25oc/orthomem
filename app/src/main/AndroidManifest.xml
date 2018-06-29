@@ -22,13 +22,17 @@
         <!-- A child activity -->
         <activity
             android:name=".controllers.activities.MyListActivity"
-            android:label="@string/title_mylist"
-            android:parentActivityName=".controllers.activities.MyListsActivity" >
+            android:label="@string/app_name">
+            android:parentActivityName=".controllers.activities.MyListsActivity">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".controllers.activities.MyListsActivity" />
+        </activity>
+        <activity android:name=".controllers.activities.FavoriteActivity">
+            android:name=".controllers.activities.FavoriteActivity"
+            android:label="@string/app_name">
         </activity>
     </application>
 
