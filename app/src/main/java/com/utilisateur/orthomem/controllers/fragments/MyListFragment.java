@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
-
+import com.utilisateur.orthomem.model.Exercice;
 
 
 public class MyListFragment extends Fragment {
@@ -29,10 +29,12 @@ public class MyListFragment extends Fragment {
             // Required empty public constructor
         }
 
-    private static final String EXERCICEID = "EXERCICEID init";
+    //private static final String EXERCICEID = "EXERCICEID init";
+    //private String myExerciceId;
+
+    private TextView mTitleTextView;
     private TextView mListNameTextView;
     private TextView mStatusTextView;
-    private String myExercicieId;
 
 
     /*
@@ -61,7 +63,6 @@ public class MyListFragment extends Fragment {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
             // Inflate the layout for this fragment
             return inflater.inflate(R.layout.activity_mylist, container, false);
         }
@@ -70,29 +71,29 @@ public class MyListFragment extends Fragment {
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
 
-            mStatusTextView = (TextView) view.findViewById(R.id.mylist_status);
+            mTitleTextView = view.findViewById(R.id.mylist_title);
+            mStatusTextView = view.findViewById(R.id.mylist_status);
             mStatusTextView.setText(null);
 
-            mListNameTextView = (TextView) view.findViewById(R.id.mylist_name);
+            mListNameTextView = view.findViewById(R.id.mylist_name);
 
 
             //get the intent in the target activity
-
             Intent myIntent = getActivity().getIntent();
 
+            // receiving our object
+            Exercice myExercice = (Exercice) myIntent.getSerializableExtra("EXERCICE");
+
+            mTitleTextView.setText(myExercice.getLabel());
+            mStatusTextView.setText(myExercice.getExercicewords().toString());
+/*
             //get the attached bundle from the intent
             Bundle myBundle = myIntent.getExtras();
 
             //Extracting the stored data from the bundle
-            assert myBundle != null;
-
-            myExercicieId = myBundle.getString("EXERCICIEID");
-
-
-            mStatusTextView.setText("Exercice ID : "+myExercicieId);
-
-
-            Toast.makeText(getContext(), "Words of Exercice number: "+myExercicieId, Toast.LENGTH_SHORT).show();
+            myExerciceId = myBundle.getString("EXERCICEID");
+            mStatusTextView.setText(myExerciceId);
+*/
 
 /*
             if (getArguments() != null) {

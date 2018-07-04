@@ -20,12 +20,13 @@ public class MyListActivity extends FragmentActivity {
 
             //Adding key value default pairs to the bundle
             Bundle myBundle = new Bundle();
-            myBundle.putString("EXERCICEID", "EXERCICEID Default value"); //Default value
+            myBundle.putString("DEFAULT_BUNDLE", "DEFAULT_BUNDLE value"); //Default value
 
             myFragment.setArguments(myBundle);
             getSupportFragmentManager().beginTransaction().add(
                     android.R.id.content, myFragment).commit();
         }
+
     }
 }
 

@@ -21,8 +21,8 @@ import com.utilisateur.orthomem.R;
 
 public class FavoriteFragment extends Fragment {
     private static final String TAG = "FavoriteFragTAG init";
-    private TextView mTitleTextView;
     private TextView mStatusTextView;
+    private TextView mTitleTextView;
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mBdd;
@@ -43,24 +43,21 @@ public class FavoriteFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mTitleTextView = (TextView) view.findViewById(R.id.favorite_title);
-
-        mStatusTextView = (TextView) view.findViewById(R.id.favorite_status);
-        mStatusTextView.setText(R.string.favorite_status);
+        mTitleTextView = view.findViewById(R.id.favorite_title);
+        mStatusTextView = view.findViewById(R.id.favorite_status);
 
         mAuth = FirebaseAuth.getInstance();
         mBdd = FirebaseFirestore.getInstance();
 
         FirebaseUser myUser = mAuth.getCurrentUser();
-        this.updateUI(myUser);
+        updateUI(myUser);
 
     }
 
     private void updateUI(FirebaseUser user) {
-        Toast.makeText(getContext(), "FavoriteActivity UpdateUI() : ok", Toast.LENGTH_SHORT).show();
-
+        
         if (user != null) {
-            mStatusTextView.setText(user.getUid() + " " + user.getEmail());
+            mStatusTextView.setText(mStatusTextView.getText() + " " + user.getEmail()+"\n"+user.getUid());
         }    else {
             mStatusTextView.setText(R.string.signed_out);
         }

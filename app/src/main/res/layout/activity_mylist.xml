@@ -28,14 +28,12 @@
         <TextView
             android:id="@+id/mylist_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="mylistname init" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/mylist_status"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="status_init" />
+            android:layout_height="wrap_content"/>
 
     </LinearLayout>
 

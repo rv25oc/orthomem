@@ -50,9 +50,8 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
 
     //puis ajouter une fonction pour remplir la cellule/les textViews en fonction d'un Exercice
     public void bind(Exercice exercice){
-        mtextViewExerciceLabel.setText(exercice.getExerciceLabel());
-        mtextViewExerciceGoal.setText(exercice.getExerciceGoal());
-        //Picasso.with(imageView.getContext()).load(myObject.getImageUrl()).centerCrop().fit().into(imageView);
+        mtextViewExerciceLabel.setText(exercice.getLabel());
+        mtextViewExerciceGoal.setText(exercice.getGoal());
     }
 
 }

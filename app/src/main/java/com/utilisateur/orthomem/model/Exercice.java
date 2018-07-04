@@ -4,59 +4,67 @@ import java.io.Serializable;
 import java.util.List;
 
 public class Exercice implements Serializable {
-    private String mexerciceId;
-    private String mexerciceLabel;
-    private String mexerciceGoal;
-    private List<String> mWordsList;
+    private String id;
+    private String label;
+    private String goal;
+    private List<String> exercicewords;
     //private String imageUrl;
 
+    public Exercice() {}
+
     public Exercice(String exerciceLabel, String exerciceGoal) {
-        this.mexerciceLabel = exerciceLabel;
-        this.mexerciceGoal = exerciceGoal;
+        this.label = exerciceLabel;
+        this.goal = exerciceGoal;
     }
 
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsList) {
-        this.mexerciceId = exerciceId;
-        this.mexerciceLabel = exerciceLabel;
-        this.mexerciceGoal = exerciceGoal;
-        this.mWordsList = wordsList;
+    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal) {
+        this.id = exerciceId;
+        this.label = exerciceLabel;
+        this.goal = exerciceGoal;
+    }
+
+    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsIdList) {
+        this.id = exerciceId;
+        this.label = exerciceLabel;
+        this.goal = exerciceGoal;
+        this.exercicewords = wordsIdList;
     }
 
 
     //getters & setters
 
-    public String getExerciceId() {
-        return mexerciceId;
+    public String getId() {
+        return id;
     }
 
-    public void setExerciceId(String exercicieId) {
-        this.mexerciceId = exercicieId;
+    public void setId(String exerciceId) {
+        this.id = exerciceId;
     }
 
-    public String getExerciceLabel() {
-        return mexerciceLabel;
+    public String getLabel() {
+        return label;
     }
 
-    public void setExercicieLabel(String exerciceLabel) {
-        this.mexerciceLabel = exerciceLabel;
-    }
-
-
-    public String getExerciceGoal() {
-        return mexerciceGoal;
-    }
-
-    public void setExerciceGoal(String exerciceGoal) {
-        this.mexerciceGoal = exerciceGoal;
+    public void setLabel(String exerciceLabel) {
+        this.label = exerciceLabel;
     }
 
 
-    public List<String> getWordsList() {
-        return mWordsList;
+    public String getGoal() {
+        return goal;
     }
 
-    public void setWordsList(List<String> wordsList) {
-        this.mWordsList = wordsList;
+    public void setGoal(String exerciceGoal) {
+        this.goal = exerciceGoal;
+    }
+
+
+    public List<String> getExercicewords() {
+        return exercicewords;
+    }
+
+    public void setExercicewords(List<String> wordsIdList) {
+        this.exercicewords = wordsIdList;
     }
 
 }

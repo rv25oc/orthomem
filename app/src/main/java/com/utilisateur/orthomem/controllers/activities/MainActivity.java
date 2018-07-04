@@ -53,24 +53,47 @@ public class MainActivity extends FragmentActivity /*implements MyListsFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        mAuth = FirebaseAuth.getInstance();
+
         mBdd = FirebaseFirestore.getInstance();
 
-
-
-        //showFragment(new FavoriteFragment());
+        mAuth = FirebaseAuth.getInstance();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        updateUI(currentUser);
 
-        this.signIn("mail@mail.mail","orthomem" );
+        if( !isCurrentUserLogged()) {
+            mAuth.createUserWithEmailAndPassword("mail@mail.mail","orthomem" )
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                FirebaseUser user = mAuth.getCurrentUser();
+                                updateUI(user);
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Toast.makeText(getApplicationContext(), "Authentication failed.",
+                                        Toast.LENGTH_SHORT).show();
+                                updateUI(null);
+                            }
+                        }
+                    });
+        } else {
+            this.signIn("mail@mail.mail","orthomem" );
+            updateUI(currentUser);
+        }
+
         //startFavoriteActivity();
         }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 
     @Override
     protected void onResume() {
@@ -122,12 +145,12 @@ public class MainActivity extends FragmentActivity /*implements MyListsFragment.
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            Toast.makeText(getApplicationContext(),"L'utilisateur user "+user.getEmail()+" a bien été connecté.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"L'utilisateur user "+user.getEmail()+" a bien été connecté.", Toast.LENGTH_LONG).show();
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(getApplicationContext(), "Pb de connexion par email.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Pb de connexion par email.", Toast.LENGTH_LONG).show();
                             //updateUI(null);
                         }
 
@@ -140,7 +163,7 @@ public class MainActivity extends FragmentActivity /*implements MyListsFragment.
 
     private void updateUI(FirebaseUser user) {
 
-        Toast.makeText(getApplicationContext(),"MainActivity UpdateUI() : ok", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),"MainActivity UpdateUI() : ok", Toast.LENGTH_SHORT).show();
 
 /*
         if (user != null) {
@@ -165,12 +188,6 @@ public class MainActivity extends FragmentActivity /*implements MyListsFragment.
         }
     */
     }
-
-
-
-    @Nullable
-    protected FirebaseUser getCurrentUser(){ return FirebaseAuth.getInstance().getCurrentUser(); }
-    protected Boolean isCurrentUserLogged(){ return (getCurrentUser() != null); }
 /*
     @Override
     public void onButtonClicked(View view) {
@@ -181,7 +198,11 @@ public class MainActivity extends FragmentActivity /*implements MyListsFragment.
 
     private void startFavoriteActivity(){
 
-        Intent myIntent = new Intent(getBaseContext(), FavoriteActivity.class);
+        Intent myIntent = new Intent(this, FavoriteActivity.class);
         startActivity(myIntent);
     }
+
+    @Nullable
+    protected FirebaseUser getCurrentUser(){ return FirebaseAuth.getInstance().getCurrentUser(); }
+    protected Boolean isCurrentUserLogged(){ return (this.getCurrentUser() != null); }
 }
