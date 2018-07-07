@@ -18,8 +18,8 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
 
 
     // - - - - - - - - -
-// GESTION DU VIEWHOLDER
-// - - - - - - - - -
+    // GESTION DU VIEWHOLDER
+    // - - - - - - - - -
     //cette fonction permet de créer les viewHolder et d'indiquer la vue à "inflater" (à partir des layout xml)
     @NonNull
     @Override
@@ -37,8 +37,6 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
         holder.updateWithExercice(exercice, this.mCallback);// 4 - Passing an instance of callback through each ViewHolder
     }
 
-
-
     @Override
     public int getItemCount() {
         return mExercicesList.size();
@@ -50,8 +48,8 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
     }
 
     // - - - - - - - - -
-// GESTION DU LISTENER
-// - - - - - - - - -
+    // GESTION DU LISTENER
+    // - - - - - - - - -
 
 
     public interface FavoriteIconListener {

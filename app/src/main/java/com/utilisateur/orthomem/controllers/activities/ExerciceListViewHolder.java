@@ -53,5 +53,4 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
         mtextViewExerciceLabel.setText(exercice.getLabel());
         mtextViewExerciceGoal.setText(exercice.getGoal());
     }
-
 }

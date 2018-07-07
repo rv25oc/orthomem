@@ -5,12 +5,11 @@ import android.os.Bundle;
 
 import com.utilisateur.orthomem.R;
 
-public class MyListsActivity extends FragmentActivity {
+public class addListActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mylists);
+        setContentView(R.layout.activity_addlist);
     }
-
 }

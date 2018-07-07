@@ -14,19 +14,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
 import com.utilisateur.orthomem.controllers.activities.MyListActivity;
@@ -41,13 +34,10 @@ public class MyListsFragment extends Fragment
             /*implements View.OnClickListener*/
             implements ExerciceListRecyclerViewAdapter.FavoriteIconListener {
 
-    public static final int GAME_ACTIVITY_REQUEST_CODE = 25;
-
-    private static final String TAG = "FavoriteFragTAG init";
+    private static final String TAG = "";
     private TextView mStatusTextView;
     private RecyclerView mRecyclerView;
     private ExerciceListRecyclerViewAdapter mAdapter;
-    private List<Exercice> mFakeExos = new ArrayList<>();
     private List<Exercice> mExos = new ArrayList<>();
     private FirebaseAuth mAuth;
     private FirebaseFirestore mBdd;
@@ -65,7 +55,7 @@ public class MyListsFragment extends Fragment
      }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         mStatusTextView = view.findViewById(R.id.mylists_status);
@@ -73,31 +63,14 @@ public class MyListsFragment extends Fragment
         mAuth = FirebaseAuth.getInstance();
         mBdd = FirebaseFirestore.getInstance();
 
-        //FirebaseUser myUser = mAuth.getCurrentUser();
-        //this.updateUI(myUser);
-
-        // Replace 'android.R.id.list' with the 'id' of your RecyclerView
         mRecyclerView = (RecyclerView) view.findViewById(R.id.myListsRecyclerView);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));  //Définit l'agencement des cellules, ici de façon verticale, comme une ListView
-        //recyclerView.setLayoutManager(new GridLayoutManager(this.getActivity(),2)); //Possibilité d'adapter en vue de type grille comme une RecyclerView, avec 2 cellules par ligne
-
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         MakeExos();
-
-        mAdapter = new ExerciceListRecyclerViewAdapter(mExos, this);
-        mRecyclerView.setAdapter(mAdapter);     //puis créer un MyAdapter, lui fournir notre liste d'exercicies et le callback. Cet Adapter servira à remplir notre recyclerview
+        mAdapter = new ExerciceListRecyclerViewAdapter(mExos, this);//puis créer un MyAdapter, lui fournir notre liste d'exercicies et le callback. Cet Adapter servira à remplir notre recyclerview
+        mRecyclerView.setAdapter(mAdapter);
 
         // Calling the method that configuring click on RecyclerView
         configureOnClickRecyclerView();
-/*
-        MakeFakeExos();
-
-        mAdapter = new ExerciceListRecyclerViewAdapter(mFakeExos, this);
-        mRecyclerView.setAdapter(mAdapter);     //puis créer un MyAdapter, lui fournir notre liste d'exercicies et le callback. Cet Adapter servira à remplir notre recyclerview
-
-
-        // Calling the method that configuring click on RecyclerView
-       configureOnClickRecyclerView();
-*/
 
     }
 
@@ -125,6 +98,11 @@ public class MyListsFragment extends Fragment
 
 
                                 // Stockage de la liste de mots
+                                /*
+                                * https://firebase.google.com/docs/firestore/data-model#hierarchical-data
+                                * Subcollections allow you to structure data hierarchically, making data easier to access. To get all messages in roomA,
+                                * you can simply access the db.collection('rooms').doc('roomA').collection('messages') collection.
+                                * */
                                 mBdd.collection("exercices").document(mydocument.getId()).collection("exercicewords")
                                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
@@ -134,8 +112,6 @@ public class MyListsFragment extends Fragment
                                                         ArrayList<String> myWordsList = new ArrayList<String>();
 
                                                         for (DocumentSnapshot mydocument2 : task2.getResult()) {
-
-
                                                             mStatusTextView.setText(mStatusTextView.getText()+" | "+mydocument2.getId());
                                                             myWordsList.add(mydocument2.getId());
                                                         }
@@ -157,15 +133,6 @@ public class MyListsFragment extends Fragment
                 });
     }
 /*
-    private void MakeFakeExos() {
-        List<String> mWordsList1 = new ArrayList<>(Arrays.asList("Mot1", "Mot2", "Mot3"));
-        mFakeExos.add(new Exercice("E1","Exo 1","Objectif pédagogique : Obj 1", mWordsList1));
-
-        List<String> mWordsList2 = new ArrayList<>(Arrays.asList("Mot11", "Mot22", "Mot333", "Mot444", "Mot555"));
-        mFakeExos.add(new Exercice("E2", "Exo 2","Objectif pédagogique : Obj 1", mWordsList2));
-    }
-*/
-/*
     public interface OnButtonClickedListener {
         public void onButtonClicked(View view);    // 1 - Declare our interface that will be implemented by any container activity
     }
@@ -185,7 +152,7 @@ public class MyListsFragment extends Fragment
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         // 1 - Get Exercice from adapter
                         Exercice clickedExercice = mAdapter.getExerciceFromPosition(position);
-                        Toast.makeText(getContext(), "You clicked on user : "+clickedExercice.getId(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "You clicked on Exercice : "+clickedExercice.getId(), Toast.LENGTH_SHORT).show();
                         //startMyListActivity(clickedExercice.getId());// Lancer l'activité MyList en passant l'id de l'exercice comme paramètre
 
                         startMyListActivity(clickedExercice);// Lancer l'activité MyList en passant l'exercice comme paramètre
@@ -204,19 +171,6 @@ public class MyListsFragment extends Fragment
 
 
     private void startMyListActivity(Exercice exercice){ //old = startMyListActivity(String exerciceid)
-/*
-        //https://zocada.com/using-intents-extras-pass-data-activities-android-beginners-guide/
-        //Adding key value pairs to the bundle
-        Bundle myBundle = new Bundle();
-        myBundle.putString("EXERCICEID", exerciceid); // pass your values and retrieve them in the other Activity using a Bundle
-
-        Intent myIntent = new Intent(this.getActivity(), MyListActivity.class);
-        //attach the bundle to the Intent object
-        myIntent.putExtras(myBundle);
-        startActivity(myIntent);
- */
-
-
         Intent myIntent = new Intent(this.getActivity(), MyListActivity.class);
         //attach the bundle to the Intent object
             //myIntent.putExtras(myBundle);

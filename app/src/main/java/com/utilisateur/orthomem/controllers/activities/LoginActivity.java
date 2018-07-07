@@ -3,14 +3,16 @@ package com.utilisateur.orthomem.controllers.activities;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+
 import com.utilisateur.orthomem.R;
 
-public class MyListsActivity extends FragmentActivity {
+
+public class LoginActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mylists);
+        setContentView(R.layout.activity_login);
     }
-
 }
+
