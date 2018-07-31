@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.utilisateur.orthomem.R;
 
-public class addListActivity extends FragmentActivity {
+public class AddListActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -3,12 +3,12 @@ package com.utilisateur.orthomem.model;
 public class Word {
     private String id;
     private String label;
-    private Integer nbsyllabes;
+    private Long nbsyllabes;
     private boolean isSelected;
 
     public Word() {}
 
-    public Word(String wordId, String wordLabel, Integer nbOfSyllabes) {
+    public Word(String wordId, String wordLabel, Long nbOfSyllabes) {
         this.id = wordId;
         this.label = wordLabel;
         this.nbsyllabes = nbOfSyllabes;
@@ -31,11 +31,11 @@ public class Word {
         this.label = label;
     }
 
-    public Integer getNbsyllabes() {
+    public Long getNbsyllabes() {
         return nbsyllabes;
     }
 
-    public void setNbsyllabes(Integer nbsyllabes) {
+    public void setNbsyllabes(Long nbsyllabes) {
         this.nbsyllabes = nbsyllabes;
     }
 

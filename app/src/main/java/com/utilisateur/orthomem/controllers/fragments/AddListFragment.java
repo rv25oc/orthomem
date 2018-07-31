@@ -13,11 +13,20 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
+import com.utilisateur.orthomem.api.ExerciceHelper;
+import com.utilisateur.orthomem.controllers.activities.MyListsActivity;
 import com.utilisateur.orthomem.controllers.activities.MyWordsActivity;
+import com.utilisateur.orthomem.model.Exercice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class AddListFragment extends Fragment {
@@ -34,7 +43,10 @@ public class AddListFragment extends Fragment {
     private TextView mSelected_value_TextView;
     String[] listItems;
     boolean[] checkedItems;
-    ArrayList<Integer> mUserItems = new ArrayList<>();
+    List<String> mUserItems = new ArrayList<>();
+    private Button mSubmit_Button;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mBdd;
 
 
     public AddListFragment() {
@@ -58,12 +70,17 @@ public class AddListFragment extends Fragment {
         mLabel_EditText = view.findViewById(R.id.label_edittext_addlist);
         mGoal_EditText = view.findViewById(R.id.goal_edittext_addlist);
         mNbOfSyllabes_SeekBar = view.findViewById(R.id.nbofsyllabes_seekBar);
-
         mSelection_Button = view.findViewById(R.id.addlist_selection_button);
-
         mSelected_label_TextView = view.findViewById(R.id.addlist_selectedwordslist_label);
         mSelected_value_TextView = view.findViewById(R.id.addlist_selectedwordslist_value);
+        mSelected_label_TextView.setText(mSelected_label_TextView.getText()+"0"+getString(R.string.addlist_selected_value_label_end));
+        mSubmit_Button = view.findViewById(R.id.addlist_submit_button);
 
+
+        mAuth = FirebaseAuth.getInstance();
+        mBdd = FirebaseFirestore.getInstance();
+
+        mUserItems = new ArrayList<>(Arrays.asList("TY2rZbDprdaWqCjIRMe7", "gpjLgiC7uqyaP6lhHBZi", "DvnDT5v5hpZqZ0L8x7R7"));
 
         //listItems = new String[]{""};
         //listItems = getResources().getStringArray(R.array.shopping_item);
@@ -77,6 +94,18 @@ public class AddListFragment extends Fragment {
 
                 Intent myintent = new Intent(getActivity(), MyWordsActivity.class);
                 myintent.putExtra("NBOFSYLLABES", mNbOfSyllabes_SeekBar.getProgress());
+                startActivity(myintent);
+            }
+        });
+
+        mSubmit_Button.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+
+                ExerciceHelper.createExercice(mAuth.getUid(), mLabel_EditText.getText().toString(), mGoal_EditText.getText().toString(), mUserItems);
+                Toast.makeText(getContext(), "Liste bien ajoutée ", Toast.LENGTH_SHORT).show();
+                Intent myintent = new Intent(getActivity(), MyListsActivity.class);
                 startActivity(myintent);
             }
         });

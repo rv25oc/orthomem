@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -69,25 +70,23 @@ public class MyWordsFragment extends Fragment
 
         mTitleTextView = view.findViewById(R.id.mywords_title);
         mStatusTextView = view.findViewById(R.id.mywords_status);
+        mSelection_Button = view.findViewById(R.id.mywords_submit_button);
 
         Intent myIntent = Objects.requireNonNull(getActivity()).getIntent();
         mNbOfSyllabes = (Integer) myIntent.getSerializableExtra("NBOFSYLLABES");
 
-        mAuth = FirebaseAuth.getInstance();
         mBdd = FirebaseFirestore.getInstance();
 
-        mWordsList.add(new Word("xxx","mylabel", 3));
-        // Cf. http://www.chansek.com/RecyclerView-no-adapter-attached-skipping-layout/
+        //mWordsList.add(new Word("xxx","mylabel", (long)3));
 
-            mRecyclerView = view.findViewById(R.id.myWordsRecyclerView);
-            mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-            getLexique(mNbOfSyllabes);
-            mAdapter = new WordListRecyclerViewAdapter(mWordsList, this);
-            mRecyclerView.setAdapter(mAdapter);
-            mRecyclerView.getAdapter();
+        getLexique(mNbOfSyllabes);
 
-            configureOnClickRecyclerView();
+        mRecyclerView = view.findViewById(R.id.myWordsRecyclerView);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
+        mAdapter = new WordListRecyclerViewAdapter(mWordsList, this);
+        mRecyclerView.setAdapter(mAdapter);
 
+        configureOnClickRecyclerView();
  /*
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -96,6 +95,8 @@ public class MyWordsFragment extends Fragment
     }
 
     public void getLexique(Integer NbOfSyllabes) {
+
+        final int myNbSyllabes = NbOfSyllabes;
 
         mBdd.collection("openlexique").document("4ZY9gNoKyuRkMENywsKV")
             .get()
@@ -108,25 +109,34 @@ public class MyWordsFragment extends Fragment
                         Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         mTitleTextView.setText(mTitleTextView.getText()+"\n"+document.getString("version"));
 
+                        CollectionReference myRef = mBdd.collection("openlexique").document(document.getId()).collection("words");
+/*
+                        switch (myNbSyllabes) {
+                            case 4:
+                                myCollection = myCollection.orderBy("nbsyllabes").startAt(myNbSyllabes);
+                                var query = myRef.where("nbsyllabes", ">=", myNbSyllabes);
+                                return true;
+                            case (>0):
+                                var query = myRef.where("nbsyllabes", ">=", myNbSyllabes);
+                                return true;
+*/
 
-                            mBdd.collection("openlexique").document(document.getId()).collection("words")
-                                .get()
-                                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                        myRef.get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                         if (task.isSuccessful()) {
-                                            mStatusTextView.setText("ok");
+
+                                            int test =0;
 
                                             for (DocumentSnapshot mydocument : task.getResult()) {
                                                 Log.d(TAG, mydocument.getId() + " => " + mydocument.getId() + " | " + mydocument.getData());
                                                 mydocument.getData();
-                                                mWordsList.add(mydocument.toObject(Word.class));
 
-                                                // Stockage de l'Id de l'exercice récupéré depuis Firebase
-                                                String myId = mydocument.getId();
-                                                final Word myWord = mWordsList.get(mWordsList.size()-1);
-                                                myWord.setId(myId);
+                                                mWordsList.add(new Word(mydocument.getId(), mydocument.get("label").toString(), (long) mydocument.get("nbsyllabes")));
+                                                mStatusTextView.setText(mStatusTextView.getText()+" | "+mydocument.get("label").toString());
                                             }
+                                            Log.w(TAG, "(task1) Getting Words  ok. mWordsList.size()="+mWordsList.size());
+                                            mStatusTextView.setText(mStatusTextView.getText()+" : ok");
                                         } else {
                                             Log.w(TAG, "Error getting documents.", task.getException());
                                             mStatusTextView.setText("ko");

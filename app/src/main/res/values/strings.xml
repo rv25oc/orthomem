@@ -16,8 +16,8 @@
     <string name="action_sign_in">Bienvenue </string>
 
     <!-- Favorite Fragment-->
-    <string name="favorite_title">Mes favoris</string>
-    <string name="favorite_status">Bienvenue </string>
+    <string name="favorite_title">Bienvenue !</string>
+    <string name="favorite_status">Statut init.</string>
 
     <!-- Mylists Fragment-->
     <string name="mylists_title">Mes listes</string>
@@ -31,8 +31,8 @@
     <!-- AddList Fragment-->
     <string name="addlist_title">Nouvelle liste</string>
     <string name="addList_status">Statut init.</string>
-    <string name="hint_label_list">Nom de cette nouvelle liste</string>
-    <string name="hint_goal_list">Objectifs pédagogiques \nde cette nouvelle liste...</string>
+    <string name="hint_label_list">Nom de cette nouvelle liste *</string>
+    <string name="hint_goal_list">Objectifs pédagogiques \nde cette nouvelle liste... *</string>
     <string name="error_field_required">Ce champ est requis</string>
     <string name="label_nbofsyllabes">Nombre de syllables des mots :</string>
     <string name="label_nbofsyllabes0">Indifférent</string>
@@ -47,11 +47,13 @@
     <string name="ok_label">Valider</string>
     <string name="dismiss_label">Annuler</string>
     <string name="clear_all_label">Réinitialiser</string>
-
+    <string name="addlist_submit_button">Ajouter cette liste</string>
+    <string name="addlist_alert">Votre liste doit comporter au moins un mot.</string>
 
     <!-- MyWords Fragment-->
     <string name="mywords_title">OpenLexique :</string>
     <string name="Mywords_status">Statut init.</string>
+    <string name="Mywords_submit">Valider</string>
 
     <!-- Parameters Fragment-->
     <string name="parameters_title">Paramètres</string>

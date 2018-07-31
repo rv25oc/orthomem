@@ -27,18 +27,32 @@ import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 
 
 public class MyListsFragment extends Fragment
             /*implements View.OnClickListener*/
             implements ExerciceListRecyclerViewAdapter.FavoriteIconListener {
 
+    /*
+    *  1. Se connecte à Firebase
+    *  2. Liste et stocke les Exercices en local
+    *  3. Affiche les données dans un RecyclerView
+    *  4. Envoie l'Exercice cliqué à l'activité MyList via Bundle
+    */
+
+
+
     private static final String TAG = "";
+    private String mymsg="mymsg init";
     private TextView mStatusTextView;
     private RecyclerView mRecyclerView;
     private ExerciceListRecyclerViewAdapter mAdapter;
     private List<Exercice> mExos = new ArrayList<>();
+    private Exercice mExercice = new Exercice();
+    private List<String> mWordsList = new ArrayList<>();
     private FirebaseAuth mAuth;
     private FirebaseFirestore mBdd;
 
@@ -55,24 +69,27 @@ public class MyListsFragment extends Fragment
      }
 
     @Override
-public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        mymsg="";
         mStatusTextView = view.findViewById(R.id.mylists_status);
 
-        mAuth = FirebaseAuth.getInstance();
+        //mAuth = FirebaseAuth.getInstance();
         mBdd = FirebaseFirestore.getInstance();
+        //MakeFakeExos();
+        MakeExos();
 
         mRecyclerView = (RecyclerView) view.findViewById(R.id.myListsRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        MakeExos();
-        mAdapter = new ExerciceListRecyclerViewAdapter(mExos, this);//puis créer un MyAdapter, lui fournir notre liste d'exercicies et le callback. Cet Adapter servira à remplir notre recyclerview
+        mAdapter = new ExerciceListRecyclerViewAdapter(mExos, this);//puis créer un MyAdapter, lui fournir notre liste d'exercices et le callback. Cet Adapter servira à remplir notre recyclerview
         mRecyclerView.setAdapter(mAdapter);
 
         // Calling the method that configuring click on RecyclerView
-        configureOnClickRecyclerView();
+       configureOnClickRecyclerView();
 
     }
+
+
 
     private void MakeExos() {
 
@@ -80,53 +97,62 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
+                    public void onComplete(@NonNull Task<QuerySnapshot> task1) {
+                        if (task1.isSuccessful()) {
+                            for (DocumentSnapshot mydocument : task1.getResult()) {
+                                Log.w(TAG, mydocument.getId() + " => | " + mydocument.getData());
 
-                            for (DocumentSnapshot mydocument : task.getResult()) {
-                                Log.d(TAG, mydocument.getId() + " => " + mydocument.getId() + " | " + mydocument.getData());
                                 mydocument.getData();
 
+                                // Création des objects locaux METHODE 2
+                                mExos.add(new Exercice(mydocument.getId(),mydocument.get("label").toString(),mydocument.get("goal").toString()));
+/*
+                                // Création des objects locaux METHODE 1
                                 mExos.add(mydocument.toObject(Exercice.class));
-
-                               // Stockage de l'Id de l'exercice récupéré depuis Firebase
                                 String myId = mydocument.getId();
+                                myExercice.setId(myId); // Affectation de l'id en manuel car toObject() de la METHODE 1 ne le fait visiblement pas
+*/
                                 final Exercice myExercice = mExos.get(mExos.size()-1);
-                                myExercice.setId(myId);
-
-                               //mExos.add(new Exercice(document.getId(),document.get("label").toString(),document.get("goal").toString()));
 
 
-                                // Stockage de la liste de mots
-                                /*
-                                * https://firebase.google.com/docs/firestore/data-model#hierarchical-data
-                                * Subcollections allow you to structure data hierarchically, making data easier to access. To get all messages in roomA,
-                                * you can simply access the db.collection('rooms').doc('roomA').collection('messages') collection.
-                                * */
+                                // Stockage de la liste de mots dans l'exercice courant
                                 mBdd.collection("exercices").document(mydocument.getId()).collection("exercicewords")
                                         .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
-                                                @Override
-                                                public void onComplete(@NonNull Task<QuerySnapshot> task2) {
-                                                    if (task2.isSuccessful()) {
-                                                        ArrayList<String> myWordsList = new ArrayList<String>();
+                                    @Override
+                                    public void onComplete(@NonNull Task<QuerySnapshot> task2) {
+                                        if (task2.isSuccessful()) {
+                                            ArrayList<String> myWordsList = new ArrayList<String>();
 
-                                                        for (DocumentSnapshot mydocument2 : task2.getResult()) {
-                                                            mStatusTextView.setText(mStatusTextView.getText()+" | "+mydocument2.getId());
-                                                            myWordsList.add(mydocument2.getId());
-                                                        }
-                                                        myExercice.setExercicewords(myWordsList);
-                                                    }
-                                                 else {
-                                                    Log.w(TAG, "Error getting documents2.", task2.getException());
+                                            int test =0;
+
+                                            for (DocumentSnapshot mydocument2 : task2.getResult()) {
+
+                                                myWordsList.add(mydocument2.getId());
+
+                                                //VERSION KO
+                                                //test++;
+                                                //mStatusTextView.setText(mStatusTextView.getText()+" . "+test);
+
+                                                mStatusTextView.setText(mStatusTextView.getText()+" | "+mydocument2.getId());
                                             }
+                                            myExercice.setExercicewords(myWordsList);
                                         }
+                                        else {
+                                            Log.w(TAG, "Error getting documents2.", task2.getException());
+                                        }
+                                    }
                                 });
-                            mStatusTextView.setText("ok");
 
+                                mymsg="mExos.size()="+mExos.size()+"| mWordsList.size()="+mWordsList.size();
+                                Log.w(TAG, "(task1) Getting Exercices  ok. mExos.size()="+ mExos.size()+"| mWordsList.size()="+mWordsList.size());
+
+                                mStatusTextView.setText(mStatusTextView.getText()+" : ok");
                             }
+
+                            Toast.makeText(getContext(),mymsg, Toast.LENGTH_LONG).show();
                         } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
+                            Log.w(TAG, "(task1) Error getting Exercices  ko.", task1.getException());
                             mStatusTextView.setText("ko");
                         }
                     }
@@ -137,11 +163,6 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
         public void onButtonClicked(View view);    // 1 - Declare our interface that will be implemented by any container activity
     }
 */
-
-
-    // --------------
-    // ACTIONS
-    // --------------
 
 
     // 1 - Configure item click on RecyclerView
@@ -160,8 +181,14 @@ public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceStat
                 });
     }
 
+    private void MakeFakeExos() {
+        List<String> mWordsList1 = new ArrayList<>(Arrays.asList("Mot1", "Mot2", "Mot3"));
+        mExos.add(new Exercice("E1","Exo 1","Objectif pédagogique : Obj 1", mWordsList1));
 
-    // 2 - Because of implementing the interface, we have to override its method
+        List<String> mWordsList2 = new ArrayList<>(Arrays.asList("Mot11", "Mot22", "Mot33", "Mot44", "Mot55"));
+        mExos.add(new Exercice("E22", "Exo 22","Objectif pédagogique : Obj 22", mWordsList2));
+        mExos.add(new Exercice("E333","Exo 333","Objectif pédagogique : Obj 333"));
+    }
 
     @Override
     public void onClickFavoriteIcon(int position) {

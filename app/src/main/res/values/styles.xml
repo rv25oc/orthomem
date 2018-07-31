@@ -1,11 +1,25 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <!-- Base application theme.    old =    Theme.AppCompat.Light.DarkActionBar .NoActionBar -->
+    <style name="AppTheme" parent="android:Theme.Material.Light">
     </style>
 
+    <style name="orthomeme" parent="AppTheme" >
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/ortholightgreen</item>
+        <item name="colorPrimaryDark">@color/orthodarkgreen</item>
+        <item name="colorAccent">@color/orthopink</item>
+        <item name="android:colorBackground">@color/ortholightgrey</item>
+        <item name="android:navigationBarColor">@color/ortholightgreen</item>
+        <item name="android:navigationContentDescription">@color/orthomidgrey</item>
+        <item name="android:actionBarStyle">@color/orthodarkgrey</item>
+        <item name="android:colorPrimary">@color/ortholightgreen</item>
+        <item name="android:colorPrimaryDark">@color/ortholightgreen</item>
+        <item name="android:colorForeground">@color/orthodarkgrey</item>
+        <item name="android:colorAccent">@color/ortholightgreen</item>
+        <item name="android:statusBarColor">@color/ortholightgreen</item>
+        <item name="android:textColorPrimaryInverse">@color/ortholightgrey</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/orthomidgrey</item>
+    </style>
 </resources>
