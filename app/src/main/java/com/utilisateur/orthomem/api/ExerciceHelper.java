@@ -34,15 +34,12 @@ public class ExerciceHelper {
 
 
     // --- CREATE EXERCICE
-    public static Task<DocumentReference> createExercice(String user, String label, String goal, List<String> wordids) {
+    public static Task<DocumentReference> createExercice(String label, String goal, List<String> wordids) {
 
-        final List<String> myIds;
-        myIds=wordids;
-
+        final List<String> myIds = wordids;
         Map<String, Object> myExercice = new HashMap<>();
         myExercice.put("label", label);
         myExercice.put("goal", goal);
-        myExercice.put("ownerid", user);
         myExercice.put("creadate", Calendar.getInstance().getTime());
 
 
@@ -51,12 +48,12 @@ public class ExerciceHelper {
                 .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                     @Override
                     public void onSuccess(DocumentReference documentReference) {
-                        Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+                        Log.d(TAG, "DocumentSnapshot Exercice written with ID: " + documentReference.getId());
 
                         for (int index = 0; index < myIds.size(); index++) {
 
                             Map<String, Object> myWord = new HashMap<>();
-                            myWord.put("id", myIds.get(index));
+                            myWord.put("wordid", myIds.get(index));
 
                             ExerciceHelper.getExercicesCollection().document(documentReference.getId()).collection(UNDER_COLLECTION_NAME)
                                     .add(myWord)
@@ -78,7 +75,7 @@ public class ExerciceHelper {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding exercice", e);
+                        Log.w(TAG, "Error adding new exercice", e);
                     }
                 });
     }

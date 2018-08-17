@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- activity_addlist.xml -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.utilisateur.orthomem.controllers.fragments.AddListFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:id="@+id/addlist_login_form_ll"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
         <android.support.v7.widget.CardView
+            android:layout_gravity="top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/activity_vertical_margin">
+            android:layout_height="wrap_content">
 
 
             <TextView
@@ -24,136 +18,141 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/activity_vertical_margin"
-                android:text="@string/addlist_title"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:text="@string/addlist_title" />
         </android.support.v7.widget.CardView>
 
-        <TextView
-            android:id="@+id/addlist_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="status_init" />
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fillViewport="true">
 
-        <EditText
-            android:id="@+id/label_edittext_addlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_label_list"
-            android:inputType="text"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:text="Ma liste"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/goal_edittext_addlist"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/label_edittext_addlist_login_form"
-            android:ems="10"
-            android:hint="@string/hint_goal_list"
-            android:inputType="textMultiLine"
-            android:maxLines="3"
-            android:text="Mes objectifs"/>
+                <EditText
+                    android:id="@+id/label_edittext_addlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:hint="@string/hint_label_list"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
 
-        <TextView
-            android:id="@+id/nbofsyllabes_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="@string/label_nbofsyllabes" />
+                <EditText
+                    android:id="@+id/goal_edittext_addlist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:ems="10"
+                    android:hint="@string/hint_goal_list"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"/>
 
-        <SeekBar
-            android:id="@+id/nbofsyllabes_seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:indeterminate="false"
-            android:min="0"
-            android:max="4"
-            android:progress="0" />
+                <TextView
+                    android:id="@+id/nbofsyllabes_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:text="@string/label_nbofsyllabes" />
 
-        <LinearLayout
-            android:id="@+id/addlist_nbofsyllabes_ll"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <SeekBar
+                    android:id="@+id/nbofsyllabes_seekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:indeterminate="false"
+                    android:min="0"
+                    android:max="4"
+                    android:progress="0" />
 
-            <TextView
-                android:id="@+id/label_nbofsyllabes0"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.22"
-                android:text="@string/label_nbofsyllabes0"
-                android:textAlignment="textStart" />
+                <LinearLayout
+                    android:id="@+id/addlist_nbofsyllabes_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/activity_vertical_margin"
+                    android:layout_marginEnd="@dimen/activity_vertical_margin"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/label_nbofsyllabes1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.18"
-                android:text="@string/label_nbofsyllabes1"
-                android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/label_nbofsyllabes0"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.18"
+                        android:text="@string/label_nbofsyllabes0"
+                        android:textAlignment="textStart" />
 
-            <TextView
-                android:id="@+id/label_nbofsyllabes2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.22"
-                android:text="@string/label_nbofsyllabes2"
-                android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/label_nbofsyllabes1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.16"
+                        android:text="@string/label_nbofsyllabes1"
+                        android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/label_nbofsyllabes3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.22"
-                android:text="@string/label_nbofsyllabes3"
-                android:textAlignment="center" />
+                    <TextView
+                        android:id="@+id/label_nbofsyllabes2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.28"
+                        android:text="@string/label_nbofsyllabes2"
+                        android:textAlignment="center" />
 
-            <TextView
-                android:id="@+id/label_nbofsyllabes04"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.18"
-                android:text="@string/label_nbofsyllabes4"
-                android:textAlignment="textEnd" />
-        </LinearLayout>
+                    <TextView
+                        android:id="@+id/label_nbofsyllabes3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.15"
+                        android:text="@string/label_nbofsyllabes3"
+                        android:textAlignment="center" />
+
+                    <TextView
+                        android:id="@+id/label_nbofsyllabes04"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.18"
+                        android:text="@string/label_nbofsyllabes4"
+                        android:textAlignment="textEnd" />
+                </LinearLayout>
 
 
-        <Button
-            android:id="@+id/addlist_selection_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/border"
-            android:textStyle="bold"
-            android:text="@string/addlist_selection_button" />
+                <Button
+                    android:id="@+id/addlist_selection_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"
+                    android:text="@string/addlist_selection_button" />
 
-        <TextView
-            android:id="@+id/addlist_selectedwordslist_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:text="@string/addlist_selected_value_label_start" />
+                <TextView
+                    android:id="@+id/addlist_selectedids"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textStyle="italic"
+                    android:text="@string/addlist_selectedids_start" />
 
-        <TextView
-            android:id="@+id/addlist_selectedwordslist_value"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:text="@string/addlist_selected_value_textview"
-            android:textStyle="italic" />
+                <TextView
+                    android:id="@+id/addlist_selectedlabels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textStyle="italic"
+                    android:text="@string/addlist_selectedlabels" />
 
-        <Button
-            android:id="@+id/addlist_submit_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:background="@drawable/border"
-            android:textStyle="bold"
-            android:text="@string/addlist_submit_button" />
-    </LinearLayout>
-
-</FrameLayout>
+                <Button
+                    android:id="@+id/addlist_submit_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/activity_vertical_margin"
+                    android:background="@drawable/border"
+                    android:textStyle="bold"
+                    android:text="@string/addlist_submit_button" />
+                </LinearLayout>
+            </ScrollView>
+</LinearLayout>

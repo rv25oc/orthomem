@@ -16,7 +16,6 @@ import butterknife.BindView;
 public class WordListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     private TextView mtextViewWordId;
     private TextView mtextViewWordLabel;
-
     @BindView(R.id.word_checkbox) CheckBox mCheckboxWord;    // 1 - Declare our ImageButton
     private WeakReference<WordListRecyclerViewAdapter.CheckBoxListener> callbackWeakRef;    // 2 - Declare a Weak Reference to our Callback
 
@@ -43,10 +42,10 @@ public class WordListViewHolder extends RecyclerView.ViewHolder implements View.
         mCheckboxWord = itemView.findViewById(R.id.word_checkbox);
     }
 
-    //puis ajouter une fonction pour remplir la cellule/les textViews en fonction d'un Exercice
+    //puis ajouter une fonction pour remplir la cellule/les textViews en fonction d'un Mot
     public void bind(Word word){
-        mtextViewWordId.setText(word.getId());
         mtextViewWordLabel.setText(word.getLabel());
-        //mCheckboxWord.isSelected();
+        mCheckboxWord.setChecked(word.isSelected());
+        mtextViewWordId.setText(word.getWordId());
     }
 }

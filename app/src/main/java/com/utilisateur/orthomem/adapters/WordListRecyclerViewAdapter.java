@@ -19,16 +19,16 @@ public class WordListRecyclerViewAdapter extends RecyclerView.Adapter<WordListVi
     // - - - - - - - - -
     // GESTION DU VIEWHOLDER
     // - - - - - - - - -
-    //cette fonction permet de créer les viewHolder et d'indiquer la vue à "inflater" (à partir des layout xml)
     @NonNull
     @Override
     public WordListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
         View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.word_recyclerview_row,viewGroup,false);
-        WordListViewHolder mWordListViewHolder = new WordListViewHolder(itemView);
-        return mWordListViewHolder;
+        return new WordListViewHolder(itemView);
+
+        //WordListViewHolder mWordListViewHolder = new WordListViewHolder(itemView);
+        //return mWordListViewHolder;
     }
 
-    //Peupler les cellules de la ligne avec les valeurs de chaque Exercice en appellant la fonction dédiée de l'objet Exercice
     @Override
     public void onBindViewHolder(@NonNull WordListViewHolder holder, int position) {
         Word word = mWordsList.get(position);
@@ -58,12 +58,18 @@ public class WordListRecyclerViewAdapter extends RecyclerView.Adapter<WordListVi
     private final CheckBoxListener mCallback; // 2 - Declaring callback
 
 
-    //ajouter un constructeur prenant en entrée une liste + le callback
     public WordListRecyclerViewAdapter(List<Word> WordsList, CheckBoxListener callback) {
         this.mWordsList = WordsList;
         this.mCallback = callback;// 3 - Passing an instance of callback through constructor
     }
 
+
+}
+
+
+
+
+/*
     public List<Word> getSelectedItem(){
         for (int i =0; i < mWordsList.size(); i++){
             Word word = mWordsList.get(i);
@@ -73,4 +79,16 @@ public class WordListRecyclerViewAdapter extends RecyclerView.Adapter<WordListVi
         }
         return mWordsList;
     }
-}
+
+    public void setSelectedItem() {
+
+        for (int i = 0; i < mOldList.size(); i++) {
+            if (mydocument.getId().equals(mOldList.get(i)))
+            {
+                //COCHER LA LIGNE
+                //mCheckBox.setSelected(true);
+                Log.w(TAG, " Élément Coché : " + mydocument.get("label").toString());
+            }
+        }
+    }
+    */

@@ -2,6 +2,7 @@
 package com.utilisateur.orthomem.controllers.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
 
+import java.util.Objects;
 
 
 public class FavoriteFragment extends Fragment {
@@ -36,30 +38,36 @@ public class FavoriteFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_favorite, container, false);
-       }
+    }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        String mUserID="";
+        String mUserLabel="";
+
         mTitleTextView = view.findViewById(R.id.favorite_title);
         mStatusTextView = view.findViewById(R.id.favorite_status);
-
-        mAuth = FirebaseAuth.getInstance();
         mBdd = FirebaseFirestore.getInstance();
 
-        FirebaseUser myUser = mAuth.getCurrentUser();
-        updateUI(myUser);
-
+        Intent myIntent = Objects.requireNonNull(getActivity()).getIntent();
+        Bundle extras = myIntent.getExtras();
+        if (extras != null) {
+            mUserID = extras.getString("UID");
+            mUserLabel = extras.getString("label");
+        }
+        updateUI(mUserID, mUserLabel);
     }
 
-    private void updateUI(FirebaseUser user) {
-        
-        if (user != null) {
-            mStatusTextView.setText(mStatusTextView.getText() + " " + user.getEmail()+"\n"+user.getUid());
-        }    else {
-            mStatusTextView.setText(R.string.signed_out);
+    private void updateUI(String userid, String userlabel) {
+
+        if (userlabel != null) {
+            mTitleTextView.append(userlabel);
+        } else {
+            mStatusTextView.setText(getResources().getString(R.string.extra_label_failed));
+            //mStatusTextView.setText(R.string.signed_out);
         }
     }
 }

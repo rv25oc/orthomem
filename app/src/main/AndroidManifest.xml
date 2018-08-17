@@ -20,6 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".controllers.activities.HomeActivity" />
+
         <activity android:name=".controllers.activities.FavoriteActivity" />
 
         <activity android:name=".controllers.activities.MyListsActivity" />

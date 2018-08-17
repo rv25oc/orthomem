@@ -12,10 +12,8 @@ public class Exercice implements Serializable {
     private String label;
     private String goal;
     private List<String> exercicewords;
-    //private Date creadate;
-    //private String ownerid;
+    private Date creadate;
 
-    public Exercice() {}
 
     public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsIdList) {
         this.id = exerciceId;
@@ -30,14 +28,59 @@ public class Exercice implements Serializable {
         this.goal = exerciceGoal;
     }
 
-    public Exercice(String exerciceLabel, String exerciceGoal) {
+    public Exercice() {
+    }
+
+    //getters & setters
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String exerciceId) {
+        this.id = exerciceId;
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String exerciceLabel) {
         this.label = exerciceLabel;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoal(String exerciceGoal) {
         this.goal = exerciceGoal;
     }
 
+    public List<String> getExercicewords() {
+        return exercicewords;
+    }
+
+    public void setExercicewords(List<String> wordsIdList) {
+        this.exercicewords = wordsIdList;
+    }
+
+    @ServerTimestamp public Date getCreadate() { return creadate; }
+
+    public void setCreadate(Date creadate) { this.creadate = creadate;}
+
+}
 
 
 /*
+
+    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsIdList,String ownerId ) {
+        this.id = exerciceId;
+        this.label = exerciceLabel;
+        this.goal = exerciceGoal;
+        this.exercicewords = wordsIdList;
+        this.ownerid = ownerId;
+    }
+
     public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date creadate) {
         this.id = exerciceId;
         this.label = exerciceLabel;
@@ -50,7 +93,6 @@ public class Exercice implements Serializable {
         this.label = exerciceLabel;
         this.goal = exerciceGoal;
         this.creadate = creadate;
-        this.ownerid = ownerid;
     }
 
     public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date creadate, String ownerid, List<String> wordsIdList) {
@@ -61,17 +103,9 @@ public class Exercice implements Serializable {
         this.ownerid = ownerid;
         this.exercicewords = wordsIdList;
     }
-*/
-
-    //getters & setters
 
 
-/*
-    @ServerTimestamp public Date getCreadate() { return creadate; }
-
-    public void setCreadate(Date creadate) { this.creadate = creadate;}
-
-
+    private String ownerid;
     public String getOwnerid() {
         return ownerid;
     }
@@ -80,17 +114,3 @@ public class Exercice implements Serializable {
         this.ownerid = ownerid;
     }
 */
-
-    public String getId() {return id;}
-    public void setId(String exerciceId) {this.id = exerciceId;}
-
-    public String getLabel() {return label;}
-    public void setLabel(String exerciceLabel) {this.label = exerciceLabel;}
-
-    public String getGoal() {return goal;}
-    public void setGoal(String exerciceGoal) {this.goal = exerciceGoal;}
-
-    public List<String> getExercicewords() {return exercicewords;}
-    public void setExercicewords(List<String> wordsIdList) {this.exercicewords = wordsIdList;}
-
-}

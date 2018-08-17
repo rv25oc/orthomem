@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="ortholightgrey">#f5f5f5</color>
+    <color name="ortholightmidgrey">#c0c0c0</color>
     <color name="orthomidgrey">#8a8a8a</color>
     <color name="orthodarkgrey">#424242</color>
     <color name="ortholightgreen">#00a57f</color>
     <color name="orthodarkgreen">#39665c</color>
     <color name="orthopink">#e8438d</color>
+    <color name="black">#000000</color>
 </resources>

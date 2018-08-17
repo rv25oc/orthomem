@@ -1,26 +1,32 @@
 package com.utilisateur.orthomem.model;
 
 public class Word {
-    private String id;
+    private String wordid;
     private String label;
     private Long nbsyllabes;
     private boolean isSelected;
 
     public Word() {}
 
+    public Word(String wordId, String wordLabel, Long nbOfSyllabes, Boolean selected) {
+        this.wordid = wordId;
+        this.label = wordLabel;
+        this.nbsyllabes = nbOfSyllabes;
+        this.isSelected = selected;
+    }
+
     public Word(String wordId, String wordLabel, Long nbOfSyllabes) {
-        this.id = wordId;
+        this.wordid = wordId;
         this.label = wordLabel;
         this.nbsyllabes = nbOfSyllabes;
     }
 
-
-    public String getId() {
-        return id;
+    public String getWordId() {
+        return wordid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setWordId(String id) {
+        this.wordid = id;
     }
 
     public String getLabel() {
@@ -39,11 +45,7 @@ public class Word {
         this.nbsyllabes = nbsyllabes;
     }
 
-    public boolean isSelected() {
-        return isSelected;
-    }
+    public boolean isSelected() {return isSelected;}
 
-    public void setSelected(boolean selected) {
-        isSelected = selected;
-    }
+    public void setSelected(boolean selected) {isSelected = selected;}
 }

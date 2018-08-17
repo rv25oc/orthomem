@@ -4,24 +4,24 @@ import android.support.annotation.Nullable;
 
 public class User {
     private String uid;
-    private String username;
+    private String label;
     private Boolean isOrtho;
 
     public User() { }
 
-    public User(String uid, String username) {
+    public User(String uid, String username, Boolean isortho) {
         this.uid = uid;
-        this.username = username;
-        this.isOrtho = false;
+        this.label = username;
+        this.isOrtho = isortho;
     }
 
     // --- GETTERS ---
     public String getUid() { return uid; }
-    public String getUsername() { return username; }
-    public Boolean getIsMentor() { return isOrtho; }
+    public String getLabel() { return label; }
+    public Boolean getIsOrtho() { return isOrtho; }
 
     // --- SETTERS ---
-    public void setUsername(String username) { this.username = username; }
+    public void setLabel(String username) { this.label = username; }
     public void setUid(String uid) { this.uid = uid; }
     public void setIsOrtho(Boolean isortho) { isOrtho = isortho; }
 }
