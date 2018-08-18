@@ -14,52 +14,38 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.model.Exercice;
+import com.utilisateur.orthomem.model.Word;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MyListFragment extends Fragment {
 
-
-
-        public MyListFragment() {
-        //public MyListFragment(String exerciceid) {
-            // Required empty public constructor
-        }
-
-    //private static final String EXERCICEID = "EXERCICEID init";
-    //private String myExerciceId;
-
+    private static final String TAG = "";
+    private TextView mWordsTextView;
     private TextView mTitleTextView;
-    private TextView mListNameTextView;
     private TextView mStatusTextView;
+    private TextView mNbofwordsTextView;
+    private TextView mCreadateTextView;
+    private TextView mGoalTextView;
+    private FirebaseFirestore mBdd;
+
+    public MyListFragment() {/*Required empty public constructor*/}
 
 
-    /*
-            MyListFragment myFragment = new MyListFragment();
-
-            //Recupération de la chaine passée en parametre
-            Bundle myBundle = new Bundle();
-            myBundle.putString("EXERCICEID", exerciceid); // pass your values and retrieve them in the other Activity using a Bundle
-
-            myFragment.setArguments(myBundle);
-            return myFragment;
-        }
-
-
-
-
-        // Cf. http://tutos-android-france.com/fragments/
-        public static MyListFragment newInstance(String exerciceid) {
-            MyListFragment fragment = new MyListFragment();
-            Bundle args = new Bundle();
-            args.putString(EXERCICEID, exerciceid);
-            fragment.setArguments(args);
-            return fragment;
-        }
-*/
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
@@ -73,10 +59,12 @@ public class MyListFragment extends Fragment {
 
             mTitleTextView = view.findViewById(R.id.mylist_title);
             mStatusTextView = view.findViewById(R.id.mylist_status);
-            mStatusTextView.setText(null);
+            mWordsTextView = view.findViewById(R.id.mylist_words);
+            mNbofwordsTextView = view.findViewById(R.id.mylist_nbofwords);
+            mCreadateTextView = view.findViewById(R.id.mylist_creadate);
+            mGoalTextView = view.findViewById(R.id.mylist_goal);
 
-            mListNameTextView = view.findViewById(R.id.mylist_name);
-
+            mBdd = FirebaseFirestore.getInstance();
 
             //get the intent in the target activity
             Intent myIntent = getActivity().getIntent();
@@ -86,23 +74,49 @@ public class MyListFragment extends Fragment {
 
             mTitleTextView.setText(myExercice.getLabel());
             mStatusTextView.setText(myExercice.getExercicewords().toString());
-/*
-            //get the attached bundle from the intent
-            Bundle myBundle = myIntent.getExtras();
+            getWordsFromLexique(myExercice.getExercicewords());
 
-            //Extracting the stored data from the bundle
-            myExerciceId = myBundle.getString("EXERCICEID");
-            mStatusTextView.setText(myExerciceId);
-*/
+            mNbofwordsTextView.append("" + myExercice.getExercicewords().size());
 
-/*
-            if (getArguments() != null) {
-                Bundle args = getArguments();
-                if (args.containsKey(EXERCICEID)){
-                    mListNameTextView.setText(args.getString("Contenu de l'exercice : " + EXERCICEID));}
-            } else {
-                mListNameTextView.setText("Arguments null " + EXERCICEID);
+            if (myExercice.getCreadate() != null) {
+                mCreadateTextView.setText(convertDateToHour(myExercice.getCreadate()));
             }
-*/
+
+            mGoalTextView.append(myExercice.getGoal());
+
         }
+
+    private String convertDateToHour(Date date) {
+        DateFormat dfTime = new SimpleDateFormat("HH:mm");
+        return dfTime.format(date);
+    }
+
+    private void getWordsFromLexique(final ArrayList<String> wordsidslist) {
+
+        for (int i = 0; i < wordsidslist.size(); i++) {
+            String str1 = wordsidslist.get(i);
+            mBdd.collection("openlexique").document("4ZY9gNoKyuRkMENywsKV").collection("words").document(str1)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot document = task.getResult();
+                                if (document.exists()) {
+                                    document.getData();
+                                    Log.w(TAG, document.getId() + " => | " + document.getData());
+                                    mWordsTextView.append("\n " + document.get("label"));
+                                    mStatusTextView.setText("");
+                                } else {
+                                    Log.w(TAG, "Error getting documents.", task.getException());
+                                    mStatusTextView.setText(mStatusTextView.getText() + " : ko1 : " + task.getException());
+                                }
+                            } else {
+                                Log.d(TAG, "No such document");
+                                mStatusTextView.setText(mStatusTextView.getText() + " : ko2 : " + task.getException());
+                            }
+                        }
+                    });
+        }
+    }
 }

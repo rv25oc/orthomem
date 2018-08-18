@@ -3,6 +3,7 @@ package com.utilisateur.orthomem.model;
 import com.google.firebase.Timestamp;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import com.google.firebase.firestore.ServerTimestamp;
@@ -11,11 +12,11 @@ public class Exercice implements Serializable {
     private String id;
     private String label;
     private String goal;
-    private List<String> exercicewords;
+    private ArrayList<String> exercicewords;
     private Date creadate;
 
 
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsIdList) {
+    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, ArrayList<String> wordsIdList) {
         this.id = exerciceId;
         this.label = exerciceLabel;
         this.goal = exerciceGoal;
@@ -56,11 +57,11 @@ public class Exercice implements Serializable {
         this.goal = exerciceGoal;
     }
 
-    public List<String> getExercicewords() {
+    public ArrayList<String> getExercicewords() {
         return exercicewords;
     }
 
-    public void setExercicewords(List<String> wordsIdList) {
+    public void setExercicewords(ArrayList<String> wordsIdList) {
         this.exercicewords = wordsIdList;
     }
 

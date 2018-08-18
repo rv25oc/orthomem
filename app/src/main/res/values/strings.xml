@@ -33,11 +33,14 @@
     <string name="mylists_title">Mes listes</string>
     <string name="mylists_status">Chargement des listes...</string>
     <string name="mylists_nbofexercices">\u00A0listes disponibles</string>
-    <string name="mylists_nbofwords">Nombre de mot(s) :</string>
+    <string name="mylists_nbofwords">Nombre de mot(s) :\u00A0</string>
 
     <!-- Mylist Fragment-->
     <string name="mylist_title">Ma liste</string>
-    <string name="mymist_name">myList_name_init</string>
+    <string name="mylist_status">Chargement de la liste...</string>
+    <string name="mylist_goal">Objectifs pédagogiques :\u00A0</string>
+    <string name="mylist_nbofwords">Nombre de mot(s) :\u00A0</string>
+    <string name="mylist_creadate">Date de création :\u00A0</string>
 
     <!-- AddList Fragment-->
     <string name="addlist_title">Nouvelle liste</string>

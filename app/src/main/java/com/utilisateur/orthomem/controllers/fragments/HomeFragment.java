@@ -148,7 +148,7 @@ public class HomeFragment extends Fragment {
                                     //mStatusTextView.setText("Connecté en tant qu'orthophoniste ? " + myUser.getIsOrtho());
                                     mLogo.setImageResource(R.drawable.logo_orthomem_600x600_color);
                                     mNavigation.setVisibility(VISIBLE);
-                                    mStatusTextView.setText(getResources().getString(R.string.home_welcome) + myUser.getLabel());
+                                    mStatusTextView.setText(getContext().getResources().getString(R.string.home_welcome) + myUser.getLabel());
                                     //startNextActivity(myUser.getUid(), myUser.getLabel());
 
                                 } else {

@@ -16,13 +16,13 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.api.ExerciceHelper;
 import com.utilisateur.orthomem.controllers.activities.MyListsActivity;
 import com.utilisateur.orthomem.controllers.activities.MyWordsActivity;
 
-import java.util.ArrayList;
 
 
 public class AddListFragment extends Fragment {
@@ -142,7 +142,7 @@ public class AddListFragment extends Fragment {
                 break;
             case "submit":
                 ExerciceHelper.createExercice(mLabel_EditText.getText().toString(), mGoal_EditText.getText().toString(), mListIds);
-                Toast.makeText(getContext(), mLabel_EditText.getText().toString()+" bien ajouté.", Toast.LENGTH_LONG).show();
+                showToast(mLabel_EditText.getText().toString() + " bien ajouté.");
                 Intent myintent = new Intent(getActivity(), MyListsActivity.class);
                 startActivity(myintent);
                 break;

@@ -15,6 +15,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ServerTimestamp;
 import com.utilisateur.orthomem.model.Exercice;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -34,9 +35,9 @@ public class ExerciceHelper {
 
 
     // --- CREATE EXERCICE
-    public static Task<DocumentReference> createExercice(String label, String goal, List<String> wordids) {
+    public static Task<DocumentReference> createExercice(String label, String goal, ArrayList<String> wordids) {
 
-        final List<String> myIds = wordids;
+        final ArrayList<String> myIds = wordids;
         Map<String, Object> myExercice = new HashMap<>();
         myExercice.put("label", label);
         myExercice.put("goal", goal);
