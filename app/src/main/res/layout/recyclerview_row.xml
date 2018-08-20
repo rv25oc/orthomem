@@ -40,7 +40,8 @@
                     android:id="@+id/icon_favicon"
                     android:layout_width="40dip"
                     android:layout_height="45dip"
-                    android:src="@drawable/ic_favorite_black_24dp" />
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/favoriteicon" />
 
             </LinearLayout>
 

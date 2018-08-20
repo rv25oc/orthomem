@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateFormat;
@@ -13,17 +14,20 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
+import com.utilisateur.orthomem.api.UserHelper;
 import com.utilisateur.orthomem.controllers.activities.MyListActivity;
 import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
@@ -49,7 +53,7 @@ public class MyListsFragment extends Fragment
     */
 
 
-
+    private FirebaseAuth mAuth;
     private static final String TAG = "";
     private TextView mStatusTextView;
     private RecyclerView mRecyclerView;
@@ -150,8 +154,16 @@ public class MyListsFragment extends Fragment
 
     @Override
     public void onClickFavoriteIcon(int position) {
+
         Exercice FavoriteExercice = mAdapter.getExerciceFromPosition(position);
         Toast.makeText(getContext(), "You are trying to favorite an exercice : "+FavoriteExercice.getLabel(), Toast.LENGTH_SHORT).show();
+
+        String mystr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_favorite_white_24dp, null).toString();
+        Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
+        mAuth = FirebaseAuth.getInstance();
+        if (mAuth.getCurrentUser() != null) {
+            //UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
+        }
     }
 
     private void startMyListActivity(Exercice exercice){

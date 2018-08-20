@@ -41,7 +41,7 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
     // - - - - - - - - -
 
     public interface FavoriteIconListener {
-        void onClickFavoriteIcon(int position); // 1 - Create interface for callback
+        void onClickFavoriteIcon(int position);
     }
 
     public ExerciceListRecyclerViewAdapter(List<Exercice> ExcercicesList, FavoriteIconListener callback) {
@@ -56,42 +56,3 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
         holder.updateWithExercice(exercice, this.mCallback);
     }
 }
-
-
-
-/*
-    private String id;
-    private String label;
-    private String goal;
-    private List<String> wordids;
-    private String ownerid;
-    private Listener callback;
-
-    public interface Listener {
-        void onDataChanged();
-    }
-
-    @Override
-    public void onDataChanged() {
-        super.onDataChanged();
-        this.callback.onDataChanged();
-    }
-
-
-    public ExerciceListRecyclerViewAdapter(@NonNull FirebaseRecyclerOptions<Exercice> options, Listener callback, String id, String label, String goal, List<String> wordids, String ownerid) {
-        super(options);
-        this.callback = callback;// 3 - Passing an instance of callback through constructor
-        this.id=id;
-        this.goal=label;
-        this.goal=goal;
-        this.wordids=wordids;
-        this.ownerid=ownerid;
-    }
-
-        //Peupler les cellules de la ligne avec les valeurs de chaque Exercice en appellant la fonction dédiée de l'objet Exercice
-    @Override
-    public void onBindViewHolder(@NonNull ExerciceListViewHolder holder, int position, @NonNull Exercice exercice) {
-        holder.bind(exercice);
-        holder.updateWithExercice(exercice);// 4 - Passing an instance of callback through each ViewHolder
-    }
-*/

@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
@@ -21,8 +22,8 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
     private TextView mtextViewExerciceNbOfWords;
     //private ImageButton mIconFavorite;
 
-
-    @BindView(R.id.icon_favicon) ImageButton mIconFavorite;    // 1 - Declare our ImageButton
+    @BindView(R.id.icon_favicon)
+    ImageButton mIconFavorite;   // 1 - Declare our ImageButton
     private WeakReference<ExerciceListRecyclerViewAdapter.FavoriteIconListener> callbackWeakRef;    // 2 - Declare a Weak Reference to our Callback
 
     public void updateWithExercice(Exercice exercice, ExerciceListRecyclerViewAdapter.FavoriteIconListener callback) {
@@ -34,7 +35,21 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
     public void onClick(View view) {
         // 5 - When a click happens, we fire our listener.
         ExerciceListRecyclerViewAdapter.FavoriteIconListener callback = callbackWeakRef.get();
-        if (callback != null) callback.onClickFavoriteIcon(getAdapterPosition());
+
+        if (callback != null) {
+            callback.onClickFavoriteIcon(getAdapterPosition());
+            // toggleicon ?
+
+            mIconFavorite.setSelected(!mIconFavorite.isSelected());
+
+            if (mIconFavorite.isSelected()) {
+                //Handle selected state change
+                mIconFavorite.setImageResource(R.drawable.ic_favorite_green_24dp);
+            } else {
+                //Handle de-select state change
+                mIconFavorite.setImageResource(R.drawable.ic_favorite_black_24dp);
+            }
+        }
     }
 
     //itemView est la vue correspondante à 1 ligne de la liste
@@ -54,12 +69,4 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
         if (exercice.getExercicewords() != null){mtextViewExerciceNbOfWords.setText("Nombre de mot(s) : "+exercice.getExercicewords().size());}
         if (exercice.getCreadate() != null){mtextViewExerciceNbOfWords.append(" | Date de création : "+exercice.getCreadate().toString());}
     }
-    /*
-
-    public void updateWithExercice(Exercice exercice) {
-        //this.mIconFavorite.setOnClickListener(this);
-    }
-
-
-     */
 }
