@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- activity_favorite.xml -->
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.utilisateur.orthomem.controllers.fragments.FavoriteFragment"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.utilisateur.orthomem.controllers.fragments.MyWordsFragment">
 
     <android.support.v7.widget.CardView
         android:layout_gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/orthomidgrey">
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/favorite_title"
+            android:id="@+id/favorites_title"
             android:layout_margin="@dimen/activity_vertical_margin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,13 +21,29 @@
 
     </android.support.v7.widget.CardView>
 
-    <TextView
-        android:id="@+id/favorite_status"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/status_init" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-</FrameLayout>
+            <TextView
+                android:id="@+id/favorites_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:text="@string/favorite_status" />
+
+            <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/favorites_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
+

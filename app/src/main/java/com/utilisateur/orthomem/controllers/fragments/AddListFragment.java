@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,13 +64,13 @@ public class AddListFragment extends Fragment {
 
                 if(mListIds != null && mListIds.size()>0){
                     mSelected_id_TextView.setText(getResources().getString(R.string.addlist_selectedids_start) + Integer.toString(mListIds.size()) + getString(R.string.addlist_selectedids_end));
-                    mSubmitButton.setBackground(getResources().getDrawable(R.drawable.border));
+                    mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton));
                     mSubmitButton.setTextColor(getResources().getColor(R.color.black));
                     mSubmitButton.setEnabled(true);
                 }
                 else {
                     mSelected_id_TextView.setText(getResources().getString(R.string.addlist_selectedids_start));
-                    mSubmitButton.setBackground(getResources().getDrawable(R.drawable.noborder));
+                    mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton_disabled));
                     mSubmitButton.setTextColor(getResources().getColor(R.color.orthomidgrey));
                     mSubmitButton.setEnabled(false);
                 }
@@ -103,12 +102,12 @@ public class AddListFragment extends Fragment {
         mSubmitButton = view.findViewById(R.id.addlist_submit_button);
 
         if(mListIds.size()>0){
-            mSubmitButton.setBackground(getResources().getDrawable(R.drawable.border));
+            mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton));
             mSubmitButton.setTextColor(getResources().getColor(R.color.black));
             mSubmitButton.setEnabled(true);
         }
         else {
-            mSubmitButton.setBackground(getResources().getDrawable(R.drawable.noborder));
+            mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton_disabled));
             mSubmitButton.setTextColor(getResources().getColor(R.color.orthomidgrey));
             mSubmitButton.setEnabled(false);
         }

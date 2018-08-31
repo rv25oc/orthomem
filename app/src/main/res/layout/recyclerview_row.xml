@@ -31,7 +31,7 @@
                     android:background="?android:selectableItemBackground"
                     android:fontFamily="sans-serif"
                     android:padding="@dimen/activity_vertical_margin"
-                    android:textColor="#333"
+                    android:textColor="@color/orthodarkgrey"
                     android:textSize="18sp"
                     tools:text="Nom de l'exercice" />
 

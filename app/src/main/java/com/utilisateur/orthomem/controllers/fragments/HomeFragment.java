@@ -6,12 +6,15 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,9 +43,11 @@ public class HomeFragment extends Fragment {
      **********/
 
     private static final String TAG = "";
+    private LinearLayout mLoginLayout;
     private BottomNavigationView mNavigation;
     private ImageView mLogo;
     private TextView mStatusTextView;
+    private ProgressBar mLoginProgressBar;
     private Button mOrthoButton;
     private Button mPatientButton;
     private FirebaseAuth mAuth;
@@ -71,6 +76,8 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mLogo = view.findViewById(R.id.logo);
+        mLoginLayout = view.findViewById(R.id.login_layout);
+        mLoginProgressBar = view.findViewById(R.id.login_progressbar);
         mOrthoButton = view.findViewById(R.id.home_ortho_button);
         mPatientButton = view.findViewById(R.id.home_patient_button);
         mStatusTextView = view.findViewById(R.id.home_status);
@@ -100,8 +107,10 @@ public class HomeFragment extends Fragment {
     }
 
     private void signIn(final String email, String password) {
-        // [START sign_in_with_email]
 
+        mLoginProgressBar.setVisibility(VISIBLE);
+
+        // [START sign_in_with_email]
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -119,10 +128,11 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 });
+
+        mLoginProgressBar.setVisibility(GONE);
     }
 
     private void updateUI(FirebaseUser user) {
-
         if (user != null) {
 
             mBdd.collection("users").document(user.getUid())
@@ -138,18 +148,20 @@ public class HomeFragment extends Fragment {
 
                                     User myUser = new User(document.getId(), document.get("label").toString(), (Boolean) document.get("isortho"));
 
+                                    mLogo.setImageResource(R.drawable.logo_orthomem_600x600_color);
+
+                                    mStatusTextView.setText(getContext().getResources().getString(R.string.home_welcome) + myUser.getLabel());
 
                                     if (!myUser.getIsOrtho()) {
+                                        mStatusTextView.setText(getContext().getResources().getString(R.string.home_welcome) + myUser.getLabel());
                                         mNavigation.findViewById(R.id.navigation_addlist).setVisibility(GONE);
                                     } else {
+                                        mStatusTextView.setText(getContext().getResources().getString(R.string.home_welcome) + myUser.getLabel() + getResources().getString(R.string.home_isortho));
                                         mNavigation.findViewById(R.id.navigation_addlist).setVisibility(VISIBLE);
                                     }
 
-                                    //mStatusTextView.setText("Connecté en tant qu'orthophoniste ? " + myUser.getIsOrtho());
-                                    mLogo.setImageResource(R.drawable.logo_orthomem_600x600_color);
+                                    //mLoginLayout.setVisibility(View.INVISIBLE);
                                     mNavigation.setVisibility(VISIBLE);
-                                    mStatusTextView.setText(getContext().getResources().getString(R.string.home_welcome) + myUser.getLabel());
-                                    //startNextActivity(myUser.getUid(), myUser.getLabel());
 
                                 } else {
                                     Log.d(TAG, "No such document", task.getException());
@@ -163,6 +175,7 @@ public class HomeFragment extends Fragment {
                     });
         } else {
             mLogo.setImageResource(R.drawable.logo_orthomem_600x600_grey);
+            mLoginLayout.setVisibility(VISIBLE);
             mNavigation.setVisibility(GONE);
         }
     }

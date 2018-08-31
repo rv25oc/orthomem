@@ -10,6 +10,7 @@ import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.controllers.activities.WordListViewHolder;
 import com.utilisateur.orthomem.model.Word;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class WordListRecyclerViewAdapter extends RecyclerView.Adapter<WordListViewHolder> {
@@ -58,7 +59,7 @@ public class WordListRecyclerViewAdapter extends RecyclerView.Adapter<WordListVi
     private final CheckBoxListener mCallback; // 2 - Declaring callback
 
 
-    public WordListRecyclerViewAdapter(List<Word> WordsList, CheckBoxListener callback) {
+    public WordListRecyclerViewAdapter(ArrayList<Word> WordsList, CheckBoxListener callback) {
         this.mWordsList = WordsList;
         this.mCallback = callback;// 3 - Passing an instance of callback through constructor
     }

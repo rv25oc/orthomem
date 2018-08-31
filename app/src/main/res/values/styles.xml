@@ -2,9 +2,12 @@
 
     <!-- Base application theme.    old =    Theme.AppCompat.Light.DarkActionBar .NoActionBar -->
     <style name="AppTheme" parent="android:Theme.Material.Light">
+        <item name="android:displayOptions">disableHome</item>
+        <item name="android:windowNoTitle">false</item>
     </style>
 
-    <style name="orthomeme" parent="AppTheme" >
+
+    <style name="orthomem" parent="AppTheme">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/ortholightgreen</item>
         <item name="colorPrimaryDark">@color/orthodarkgreen</item>

@@ -34,8 +34,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:background="@drawable/border"
+            android:background="@drawable/orthobutton_disabled"
+            android:enabled="false"
             android:text="@string/myaccount_label"
+            android:textColor="@color/orthomidgrey"
             android:textStyle="bold" />
 
         <Button
@@ -44,8 +46,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:background="@drawable/border"
+            android:background="@drawable/orthobutton_disabled"
+            android:enabled="false"
             android:text="@string/updpassword_label"
+            android:textColor="@color/orthomidgrey"
             android:textStyle="bold" />
 
         <Button
@@ -54,8 +58,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:background="@drawable/border"
+            android:background="@drawable/orthobutton_disabled"
+            android:enabled="false"
             android:text="@string/preferences_label"
+            android:textColor="@color/orthomidgrey"
             android:textStyle="bold" />
 
         <Button
@@ -64,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_margin="@dimen/activity_vertical_margin"
-            android:background="@drawable/border"
+            android:background="@drawable/orthobutton"
             android:text="@string/logout_label"
             android:textStyle="bold" />
 

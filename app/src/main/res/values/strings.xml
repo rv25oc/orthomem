@@ -12,11 +12,12 @@
 
     <!-- Home Fragment-->
     <string name="home_title">Orthomem</string>
-    <string name="home_desc">ORTHOMEM permet aux orthophonistes de proposer des exercices personnalisés d\’entrainement de la mémoire de travail et de la mémoire visuelle orthographique à leurs patients.</string>
+    <string name="home_desc">ORTHOMEM permet aux orthophonistes de proposer des exercices d\’entrainement personnalisés à leurs patients.</string>
     <string name="home_welcome">Bienvenue\u00A0</string>
     <string name="home_logout">Vous avez bien été déconnecté(e). </string>
     <string name="home_submit">Se connecter en tant que :</string>
     <string name="home_ortho">Orthophoniste</string>
+    <string name="home_isortho">\u00A0(Orthophoniste)</string>
     <string name="home_patient">Patient A</string>
 
     <!-- Login Fragment-->
@@ -27,12 +28,13 @@
 
     <!-- Favorite Fragment-->
     <string name="favorite_title">Bienvenue\u00A0</string>
+    <string name="favorite_status">Chargement des listes...</string>
     <string name="extra_label_failed">Problème de passage du nom de l\'utilisateur courant dans l'activité.</string>
 
     <!-- Mylists Fragment-->
     <string name="mylists_title">Mes listes</string>
     <string name="mylists_status">Chargement des listes...</string>
-    <string name="mylists_nbofexercices">\u00A0listes disponibles</string>
+    <string name="mylists_nbofexercices">\u00A0liste(s) disponible(s)</string>
     <string name="mylists_nbofwords">Nombre de mot(s) :\u00A0</string>
 
     <!-- Mylist Fragment-->

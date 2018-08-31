@@ -46,7 +46,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/activity_vertical_margin"
-                    android:ems="10"
                     android:hint="@string/hint_goal_list"
                     android:inputType="textMultiLine"
                     android:maxLines="3"/>
@@ -124,7 +123,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_vertical_margin"
-                    android:background="@drawable/border"
+                    android:background="@drawable/orthobutton"
                     android:textStyle="bold"
                     android:text="@string/addlist_selection_button" />
 
@@ -150,7 +149,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_margin="@dimen/activity_vertical_margin"
-                    android:background="@drawable/border"
+                    android:background="@drawable/orthobutton"
                     android:textStyle="bold"
                     android:text="@string/addlist_submit_button" />
                 </LinearLayout>

@@ -9,11 +9,12 @@ import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.controllers.activities.ExerciceListViewHolder;
 import com.utilisateur.orthomem.model.Exercice;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<ExerciceListViewHolder> {
 
-    private List<Exercice> mExercicesList;
+    private ArrayList<Exercice> mExercicesList;
     private FavoriteIconListener mCallback;
 
     // - - - - - - - - -
@@ -44,7 +45,7 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
         void onClickFavoriteIcon(int position);
     }
 
-    public ExerciceListRecyclerViewAdapter(List<Exercice> ExcercicesList, FavoriteIconListener callback) {
+    public ExerciceListRecyclerViewAdapter(ArrayList<Exercice> ExcercicesList, FavoriteIconListener callback) {
         this.mExercicesList = ExcercicesList;
         this.mCallback = callback;// 3 - Passing an instance of callback through constructor
     }

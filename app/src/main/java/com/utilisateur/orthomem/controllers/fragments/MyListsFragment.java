@@ -9,36 +9,26 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
-import com.utilisateur.orthomem.api.UserHelper;
 import com.utilisateur.orthomem.controllers.activities.MyListActivity;
 import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
 
 
 public class MyListsFragment extends Fragment
@@ -75,7 +65,7 @@ public class MyListsFragment extends Fragment
         mStatusTextView = view.findViewById(R.id.mylists_status);
         mBdd = FirebaseFirestore.getInstance();
 
-        mExos = MakeExos(); //Charger la RecyclerView avec la collection d'Exercices stockée sur Firebase
+        mExos = LoadExos(); //Charger la RecyclerView avec la collection d'Exercices stockée sur Firebase
 
         Log.w(TAG, "mExos " + mExos.size());
 
@@ -87,7 +77,7 @@ public class MyListsFragment extends Fragment
         configureOnClickRecyclerView();
     }
 
-    private ArrayList<Exercice> MakeExos() {
+    private ArrayList<Exercice> LoadExos() {
 
         final ArrayList<Exercice> myExos = new ArrayList<>();
 

@@ -13,6 +13,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.model.User;
@@ -24,6 +25,7 @@ public class UserHelper {
     private static final String TAG = "";
     private static final String COLLECTION_NAME = "users";
     private static final String UNDER_COLLECTION_NAME = "usersfavorites";
+    private boolean isfavorite;
 
     // --- COLLECTION REFERENCE ---
 
@@ -71,9 +73,13 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(uid).get();
     }
 
-    public static Boolean isFavorite(String uid, String Exerciceid) {
+    public static Task<QuerySnapshot> getFavorites(String uid) {
+        return UserHelper.getFavoritesCollection(uid).get();
+    }
 
-        Boolean isfavorite = false;
+    public boolean isFavorite(String uid, String Exerciceid) {
+
+        isfavorite = false;
 
         Query myQuery = UserHelper.getFavoritesCollection(uid).whereEqualTo("exerciceid", Exerciceid);
         myQuery.get()
@@ -84,7 +90,7 @@ public class UserHelper {
                             for (DocumentSnapshot mydocument : task.getResult()) {
                                 Log.w(TAG, "(task) DocumentSnapshot FavoriteExercice :" + mydocument.getData());
                                 mydocument.getData();
-                                //isfavorite=true;//Flag favorite exists
+                                isfavorite = true;//Flag favorite exists
                             }
                         } else {
                             Log.w(TAG, "(task) Error getting DocumentSnapshot FavoriteExercice", task.getException());
@@ -131,9 +137,9 @@ public class UserHelper {
     }
 
     // --- TOGGLE FAVORITE ---
-    public static void toogleFavorite(String uid, String Exerciceid) {
+    public void toogleFavorite(String uid, String Exerciceid) {
 
-        if (UserHelper.isFavorite(uid, Exerciceid)) {
+        if (this.isFavorite(uid, Exerciceid)) {
             UserHelper.deleteFavorite(uid, Exerciceid);
         } else {
             UserHelper.addFavorite(uid, Exerciceid);
