@@ -9,6 +9,8 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -24,14 +26,11 @@ import com.utilisateur.orthomem.controllers.fragments.MyListFragment;
 import com.utilisateur.orthomem.controllers.fragments.MyListsFragment;
 import com.utilisateur.orthomem.controllers.fragments.ParametersFragment;
 
+import static android.view.View.GONE;
 
-public class MainActivity extends FragmentActivity {
 
-    /**********
-     *
-     * 1. Initialisation de la BottomNavigationView
-     *
-     **********/
+public class MainActivity extends /*FragmentActivity*/ AppCompatActivity {
+
     private static final String TAG="";
     private BottomNavigationView mNavigation;
     private MyListFragment myListFragment;
@@ -97,10 +96,12 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNavigation = findViewById(R.id.navigation);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
+        mNavigation = findViewById(R.id.navigation);
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        //mNavigation.setVisibility(GONE);
+        mNavigation.setVisibility(GONE);
 
         mBdd = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()

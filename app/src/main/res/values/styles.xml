@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Base application theme.    old =    Theme.AppCompat.Light.DarkActionBar .NoActionBar -->
-    <style name="AppTheme" parent="android:Theme.Material.Light">
+    <!-- Base application theme.    old =    Theme.AppCompat.Light.DarkActionBar .NoActionBar or Theme.Material.Light or android:Theme.AppCompat.Light.NoActionBar-->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:displayOptions">disableHome</item>
         <item name="android:windowNoTitle">false</item>
     </style>
