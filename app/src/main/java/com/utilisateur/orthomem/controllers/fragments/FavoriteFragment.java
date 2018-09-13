@@ -80,7 +80,7 @@ public class FavoriteFragment extends Fragment
 
         mRecyclerView = view.findViewById(R.id.favorites_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        mAdapter = new ExerciceListRecyclerViewAdapter(mFavoritesExos, this);
+        mAdapter = new ExerciceListRecyclerViewAdapter(mFavoritesExos);
         mRecyclerView.setAdapter(mAdapter);
 
         configureOnClickRecyclerView();

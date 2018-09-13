@@ -24,6 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
+import com.utilisateur.orthomem.api.UserHelper;
 import com.utilisateur.orthomem.controllers.activities.MyListActivity;
 import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
@@ -71,7 +72,7 @@ public class MyListsFragment extends Fragment
 
         mRecyclerView = view.findViewById(R.id.myListsRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        mAdapter = new ExerciceListRecyclerViewAdapter(mExos, this);
+        mAdapter = new ExerciceListRecyclerViewAdapter(mExos);
         mRecyclerView.setAdapter(mAdapter);
 
         configureOnClickRecyclerView();
@@ -152,7 +153,8 @@ public class MyListsFragment extends Fragment
         Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
-            //UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
+            UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
+
         }
     }
 

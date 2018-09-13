@@ -25,7 +25,7 @@ public class UserHelper {
     private static final String TAG = "";
     private static final String COLLECTION_NAME = "users";
     private static final String UNDER_COLLECTION_NAME = "usersfavorites";
-    private boolean isfavorite;
+    private static boolean isfavorite;
 
     // --- COLLECTION REFERENCE ---
 
@@ -77,7 +77,7 @@ public class UserHelper {
         return UserHelper.getFavoritesCollection(uid).get();
     }
 
-    public boolean isFavorite(String uid, String Exerciceid) {
+    public static boolean isFavorite(String uid, String Exerciceid) {
 
         isfavorite = false;
 
@@ -137,9 +137,9 @@ public class UserHelper {
     }
 
     // --- TOGGLE FAVORITE ---
-    public void toogleFavorite(String uid, String Exerciceid) {
+    public static void toogleFavorite(String uid, String Exerciceid) {
 
-        if (this.isFavorite(uid, Exerciceid)) {
+        if (isFavorite(uid, Exerciceid)) {
             UserHelper.deleteFavorite(uid, Exerciceid);
         } else {
             UserHelper.addFavorite(uid, Exerciceid);

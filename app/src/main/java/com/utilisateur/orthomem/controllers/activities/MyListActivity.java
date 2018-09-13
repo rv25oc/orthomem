@@ -3,12 +3,15 @@ package com.utilisateur.orthomem.controllers.activities;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.google.firebase.perf.metrics.AddTrace;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.controllers.fragments.MyListFragment;
 
 public class MyListActivity extends FragmentActivity {
 
     @Override
+
+    @AddTrace(name = "MyListonCreateTrace", enabled = true /* optional */)
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mylist);
