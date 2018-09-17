@@ -33,6 +33,9 @@ import com.utilisateur.orthomem.model.Word;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -40,12 +43,19 @@ public class MyWordsFragment extends Fragment
         implements WordListRecyclerViewAdapter.CheckBoxListener {
 
     private static final String TAG = "";
-    private TextView mStatusTextView;
-    private TextView mTitleTextView;
-    private Button mSubmitButton;
+    @BindView(R.id.mylist_title)
+    TextView mTitleTextView;
+    @BindView(R.id.mylist_status)
+    TextView mStatusTextView;
+    @BindView(R.id.word_checkbox)
+    CheckBox mCheckBox;
+    @BindView(R.id.mywords_submit_button)
+    Button mSubmitButton;
+    @BindView(R.id.myWordsRecyclerView)
+    RecyclerView mRecyclerView;
+
+
     private Integer mNbOfSyllabes;
-    private RecyclerView mRecyclerView;
-    private CheckBox mCheckBox;
     private WordListRecyclerViewAdapter mAdapter;
     private ArrayList<Word> mWordsList = new ArrayList<>(); // Liste de chargement de la RecyclerView
     private ArrayList<Word> mSelectedWords = new ArrayList<>();  // Coolection des mots cochés/sélectionnés
@@ -65,12 +75,7 @@ public class MyWordsFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mTitleTextView = view.findViewById(R.id.mywords_title);
-        mStatusTextView = view.findViewById(R.id.mywords_status);
-        mCheckBox = view.findViewById(R.id.word_checkbox);
-        mSubmitButton = view.findViewById(R.id.mywords_submit_button);
-
+        ButterKnife.bind(this, view);
 
         Intent myIntent = Objects.requireNonNull(getActivity()).getIntent();
         Bundle extras = myIntent.getExtras();
@@ -91,7 +96,6 @@ public class MyWordsFragment extends Fragment
 
         getLexique(mNbOfSyllabes);
 
-        mRecyclerView = view.findViewById(R.id.myWordsRecyclerView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         mAdapter = new WordListRecyclerViewAdapter(mWordsList, this);
         mRecyclerView.setAdapter(mAdapter);

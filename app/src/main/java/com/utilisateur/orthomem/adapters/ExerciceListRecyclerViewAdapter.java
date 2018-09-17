@@ -18,14 +18,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class ExerciceListRecyclerViewAdapter
         extends RecyclerView.Adapter<ExerciceListRecyclerViewAdapter.ExerciceListViewHolder>
         implements View.OnClickListener {
 
+    @BindView(R.id.icon_favicon)
+    ImageButton mIconFavorite;
     private ArrayList<Exercice> mExercicesList;
     private FirebaseAuth mAuth;
-    private ImageButton mIconFavorite;
 
     private WeakReference<FavoriteIconListener> callbackWeakRef;    // 2 - Declare a Weak Reference to our Callback
 
@@ -55,10 +57,9 @@ public class ExerciceListRecyclerViewAdapter
     public void onBindViewHolder(@NonNull ExerciceListViewHolder holder, int position) {
         Exercice exercice = mExercicesList.get(position);
 
-
         //holder.updateWithExercice(exercice, this.mCallback);
 
-        holder.mIconFavorite.setImageResource(R.drawable.ic_favorite_green_24dp);
+        //holder.mIconFavorite.setImageResource(R.drawable.ic_favorite_green_24dp);
 
         holder.mtextViewExerciceLabel.setText(exercice.getLabel());
         holder.mtextViewExerciceGoal.setText(exercice.getGoal());
@@ -112,27 +113,24 @@ public class ExerciceListRecyclerViewAdapter
     public interface FavoriteIconListener {
         void onClickFavoriteIcon(int position);
     }
-    // - - - - - - - - -
-    // GESTION DU LISTENER FAVORITICONE
-    // - - - - - - - - -
 
     public class ExerciceListViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.icon_favicon)
         ImageButton mIconFavorite;   // 1 - Declare our ImageButton
-        private TextView mtextViewExerciceLabel;
-        private TextView mtextViewExerciceGoal;
-        //private ImageButton mIconFavorite;
-        private TextView mtextViewExerciceNbOfWords;
+        @BindView(R.id.exercice_label)
+        TextView mtextViewExerciceLabel;
+        @BindView(R.id.exercice_goal)
+        TextView mtextViewExerciceGoal;
+        @BindView(R.id.exercice_nbofwords)
+        TextView mtextViewExerciceNbOfWords;
+        @BindView(R.id.exercice_creadate)
+        TextView mtextViewExerciceCreadate;
 
 
         //itemView est la vue correspondante à 1 ligne de la liste
         public ExerciceListViewHolder(View itemView) {
             super(itemView);
-            //Associations vues/valeurs
-            mtextViewExerciceLabel = (TextView) itemView.findViewById(R.id.exercice_label);
-            mIconFavorite = (ImageButton) itemView.findViewById(R.id.icon_favicon);
-            mtextViewExerciceGoal = (TextView) itemView.findViewById(R.id.exercice_goal);
-            mtextViewExerciceNbOfWords = (TextView) itemView.findViewById(R.id.exercice_nbofwords);
+            ButterKnife.bind(this, itemView);
         }
     }
 

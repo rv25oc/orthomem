@@ -22,6 +22,8 @@ import com.utilisateur.orthomem.api.ExerciceHelper;
 import com.utilisateur.orthomem.controllers.activities.MyListsActivity;
 import com.utilisateur.orthomem.controllers.activities.MyWordsActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 public class AddListFragment extends Fragment {
@@ -30,17 +32,25 @@ public class AddListFragment extends Fragment {
 
     public static final int MYWORDS_ACTIVITY_REQUEST_CODE =222;
     private static final String TAG = "";
-    private EditText mLabel_EditText;
-    private EditText mGoal_EditText;
-    private SeekBar mNbOfSyllabes_SeekBar;
-    private Button mSelectionButton;
-    private Button mSubmitButton;
-    private TextView mSelected_id_TextView;
-    private TextView mSelected_label_TextView;
+
+    @BindView(R.id.label_edittext_addlist)
+    EditText mLabel_EditText;
+    @BindView(R.id.goal_edittext_addlist)
+    EditText mGoal_EditText;
+    @BindView(R.id.nbofsyllabes_seekBar)
+    SeekBar mNbOfSyllabes_SeekBar;
+    @BindView(R.id.addlist_selection_button)
+    Button mSelectionButton;
+    @BindView(R.id.addlist_selectedids)
+    TextView mSelected_id_TextView;
+    @BindView(R.id.addlist_selectedlabels)
+    TextView mSelected_label_TextView;
+    @BindView(R.id.addlist_submit_button)
+    Button mSubmitButton;
+
     private ArrayList<String> mListIds = new ArrayList<>();
     private ArrayList<String> mListLabels = new ArrayList<>();
     private FirebaseFirestore mBdd;
-
 
     public AddListFragment() {/*Required empty public constructor*/}
 
@@ -91,15 +101,9 @@ public class AddListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
 
-        mLabel_EditText = view.findViewById(R.id.label_edittext_addlist);
-        mGoal_EditText = view.findViewById(R.id.goal_edittext_addlist);
-        mNbOfSyllabes_SeekBar = view.findViewById(R.id.nbofsyllabes_seekBar);
-        mSelectionButton = view.findViewById(R.id.addlist_selection_button);
-        mSelected_id_TextView = view.findViewById(R.id.addlist_selectedids);
         mSelected_id_TextView.setText(mSelected_id_TextView.getText());
-        mSelected_label_TextView = view.findViewById(R.id.addlist_selectedlabels);
-        mSubmitButton = view.findViewById(R.id.addlist_submit_button);
 
         if(mListIds.size()>0){
             mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton));

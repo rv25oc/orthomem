@@ -34,17 +34,26 @@ import com.utilisateur.orthomem.utils.ItemClickSupport;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class FavoriteFragment extends Fragment
         implements ExerciceListRecyclerViewAdapter.FavoriteIconListener {
 
     private static final String TAG = "FavoriteFragTAG init";
-    private TextView mStatusTextView;
-    private TextView mTitleTextView;
+
+    @BindView(R.id.favorites_title)
+    TextView mTitleTextView;
+    @BindView(R.id.favorites_status)
+    TextView mStatusTextView;
+    @BindView(R.id.favorites_recyclerview)
+    RecyclerView mRecyclerView;
+
 
     private FirebaseAuth mAuth;
     private FirebaseFirestore mBdd;
-    private RecyclerView mRecyclerView;
+    //private RecyclerView mRecyclerView;
     private ExerciceListRecyclerViewAdapter mAdapter;
     private ArrayList<Exercice> mFavoritesExos;
     private String mUserID = "";
@@ -65,9 +74,8 @@ public class FavoriteFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
 
-        mTitleTextView = view.findViewById(R.id.favorites_title);
-        mStatusTextView = view.findViewById(R.id.favorites_status);
         mBdd = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -78,7 +86,7 @@ public class FavoriteFragment extends Fragment
 
         Log.w(TAG, "mFavoriteExos " + mFavoritesExos.size());
 
-        mRecyclerView = view.findViewById(R.id.favorites_recyclerview);
+        //mRecyclerView = view.findViewById(R.id.favorites_recyclerview);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         mAdapter = new ExerciceListRecyclerViewAdapter(mFavoritesExos);
         mRecyclerView.setAdapter(mAdapter);

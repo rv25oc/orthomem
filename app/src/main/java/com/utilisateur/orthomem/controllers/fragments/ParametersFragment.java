@@ -16,10 +16,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.controllers.activities.HomeActivity;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class ParametersFragment extends Fragment {
+    @BindView(R.id.button_logout)
+    Button mLogoutButton;
 
-    private Button mLogoutButton;
     private FirebaseAuth mAuth;
 
     public ParametersFragment() {
@@ -36,8 +40,8 @@ public class ParametersFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ButterKnife.bind(this, view);
 
-        mLogoutButton = view.findViewById(R.id.button_logout);
         mAuth = FirebaseAuth.getInstance();
 
         mLogoutButton.setOnClickListener(new View.OnClickListener() {

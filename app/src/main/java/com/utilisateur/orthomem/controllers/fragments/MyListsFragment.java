@@ -31,6 +31,9 @@ import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MyListsFragment extends Fragment
             /*implements View.OnClickListener*/
@@ -46,8 +49,10 @@ public class MyListsFragment extends Fragment
 
     private FirebaseAuth mAuth;
     private static final String TAG = "";
-    private TextView mStatusTextView;
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.mylists_status)
+    TextView mStatusTextView;
+    @BindView(R.id.myListsRecyclerView)
+    RecyclerView mRecyclerView;
     private ExerciceListRecyclerViewAdapter mAdapter;
     private ArrayList<Exercice> mExos;
     private FirebaseFirestore mBdd;
@@ -63,14 +68,15 @@ public class MyListsFragment extends Fragment
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mStatusTextView = view.findViewById(R.id.mylists_status);
+        ButterKnife.bind(this, view);
+
         mBdd = FirebaseFirestore.getInstance();
 
         mExos = LoadExos(); //Charger la RecyclerView avec la collection d'Exercices stockée sur Firebase
 
         Log.w(TAG, "mExos " + mExos.size());
 
-        mRecyclerView = view.findViewById(R.id.myListsRecyclerView);
+
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
         mAdapter = new ExerciceListRecyclerViewAdapter(mExos);
         mRecyclerView.setAdapter(mAdapter);

@@ -26,13 +26,17 @@ import com.utilisateur.orthomem.controllers.fragments.MyListFragment;
 import com.utilisateur.orthomem.controllers.fragments.MyListsFragment;
 import com.utilisateur.orthomem.controllers.fragments.ParametersFragment;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static android.view.View.GONE;
 
 
 public class MainActivity extends /*FragmentActivity*/ AppCompatActivity {
 
     private static final String TAG="";
-    private BottomNavigationView mNavigation;
+    @BindView(R.id.navigation)
+    BottomNavigationView mNavigation;
     private MyListFragment myListFragment;
     private FirebaseFirestore mBdd;
 
@@ -95,11 +99,12 @@ public class MainActivity extends /*FragmentActivity*/ AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        mNavigation = findViewById(R.id.navigation);
+        //mNavigation = findViewById(R.id.navigation);
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         mNavigation.setVisibility(GONE);
 

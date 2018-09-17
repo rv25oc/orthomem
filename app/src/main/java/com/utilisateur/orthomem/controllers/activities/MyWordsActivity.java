@@ -8,7 +8,6 @@ import com.utilisateur.orthomem.adapters.WordListRecyclerViewAdapter;
 import com.utilisateur.orthomem.controllers.fragments.MyWordsFragment;
 
 public class MyWordsActivity extends FragmentActivity {
-    WordListRecyclerViewAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

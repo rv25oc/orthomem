@@ -31,17 +31,27 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 
 public class MyListFragment extends Fragment {
 
     private static final String TAG = "";
-    private TextView mWordsTextView;
-    private TextView mTitleTextView;
-    private TextView mStatusTextView;
-    private TextView mNbofwordsTextView;
-    private TextView mCreadateTextView;
-    private TextView mGoalTextView;
+    @BindView(R.id.mylist_title)
+    TextView mTitleTextView;
+    @BindView(R.id.mylist_status)
+    TextView mStatusTextView;
+    @BindView(R.id.mylist_words)
+    TextView mWordsTextView;
+    @BindView(R.id.mylist_nbofwords)
+    TextView mNbofwordsTextView;
+    @BindView(R.id.mylist_creadate)
+    TextView mCreadateTextView;
+    @BindView(R.id.mylist_goal)
+    TextView mGoalTextView;
     private FirebaseFirestore mBdd;
+
 
     public MyListFragment() {/*Required empty public constructor*/}
 
@@ -55,13 +65,7 @@ public class MyListFragment extends Fragment {
         @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-
-            mTitleTextView = view.findViewById(R.id.mylist_title);
-            mStatusTextView = view.findViewById(R.id.mylist_status);
-            mWordsTextView = view.findViewById(R.id.mylist_words);
-            mNbofwordsTextView = view.findViewById(R.id.mylist_nbofwords);
-            mCreadateTextView = view.findViewById(R.id.mylist_creadate);
-            mGoalTextView = view.findViewById(R.id.mylist_goal);
+            ButterKnife.bind(this, view);
 
             mBdd = FirebaseFirestore.getInstance();
 

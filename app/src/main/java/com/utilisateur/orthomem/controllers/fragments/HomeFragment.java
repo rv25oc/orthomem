@@ -1,12 +1,10 @@
 package com.utilisateur.orthomem.controllers.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,9 +23,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.utilisateur.orthomem.R;
+import com.utilisateur.orthomem.api.Bdd;
 import com.utilisateur.orthomem.model.User;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
@@ -43,13 +44,22 @@ public class HomeFragment extends Fragment {
      **********/
 
     private static final String TAG = "";
-    private LinearLayout mLoginLayout;
+    @BindView(R.id.home_status)
+    TextView mStatusTextView;
+    @BindView(R.id.login_layout)
+    LinearLayout mLoginLayout;
+
     private BottomNavigationView mNavigation;
-    private ImageView mLogo;
-    private TextView mStatusTextView;
-    private ProgressBar mLoginProgressBar;
-    private Button mOrthoButton;
-    private Button mPatientButton;
+    //@BindView(this.getActivity().R.id.navigation) BottomNavigationView mNavigation;
+
+    @BindView(R.id.logo)
+    ImageView mLogo;
+    @BindView(R.id.login_progressbar)
+    ProgressBar mLoginProgressBar;
+    @BindView(R.id.home_ortho_button)
+    Button mOrthoButton;
+    @BindView(R.id.home_patient_button)
+    Button mPatientButton;
     private FirebaseAuth mAuth;
     private FirebaseFirestore mBdd;
     private FirebaseUser mUser;
@@ -74,18 +84,15 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mLogo = view.findViewById(R.id.logo);
-        mLoginLayout = view.findViewById(R.id.login_layout);
-        mLoginProgressBar = view.findViewById(R.id.login_progressbar);
-        mOrthoButton = view.findViewById(R.id.home_ortho_button);
-        mPatientButton = view.findViewById(R.id.home_patient_button);
-        mStatusTextView = view.findViewById(R.id.home_status);
+        ButterKnife.bind(this, view);
 
         mNavigation = this.getActivity().findViewById(R.id.navigation);
         mNavigation.setVisibility(GONE);
 
         mBdd = FirebaseFirestore.getInstance();
+
+        //mBdd = new Bdd().getInstance().initBdd();
+
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();

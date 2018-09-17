@@ -40,6 +40,7 @@
     <!-- Mylist Fragment-->
     <string name="mylist_title">Ma liste</string>
     <string name="mylist_status">Chargement de la liste...</string>
+    <string name="mylist_label">Nom de l\'exercice :\u00A0</string>
     <string name="mylist_goal">Objectifs pédagogiques :\u00A0</string>
     <string name="mylist_nbofwords">Nombre de mot(s) :\u00A0</string>
     <string name="mylist_creadate">Date de création :\u00A0</string>
@@ -82,11 +83,13 @@
     <string name="preferences_label">Préférences</string>
     <string name="logout_label">Se déconnecter</string>
 
+
     <!-- Dependencies requierments-->
     <string name="auth_failed">Authentication failed</string>
     <string name="google_status_fmt">Google User: %s</string>
     <string name="signed_out">ORTHOMEM : Bien déconnecté. Vous pouvez poser votre smartphone et reprendre une activité normale. ^^ </string>
     <string name="title_activity_login">Sign in</string>
+
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
