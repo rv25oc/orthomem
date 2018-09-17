@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,9 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.OnItemSelected;
+import butterknife.Optional;
 
 
 public class MyListsFragment extends Fragment
@@ -53,6 +57,9 @@ public class MyListsFragment extends Fragment
     TextView mStatusTextView;
     @BindView(R.id.myListsRecyclerView)
     RecyclerView mRecyclerView;
+    @Nullable
+    @BindView(R.id.icon_favicon)
+    ImageButton mIconFavorite;
     private ExerciceListRecyclerViewAdapter mAdapter;
     private ArrayList<Exercice> mExos;
     private FirebaseFirestore mBdd;
@@ -62,13 +69,16 @@ public class MyListsFragment extends Fragment
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_mylists, container, false);
+        View view = inflater.inflate(R.layout.activity_mylists, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+
+        //return inflater.inflate(R.layout.activity_mylists, container, false);
      }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         mBdd = FirebaseFirestore.getInstance();
 
@@ -149,7 +159,9 @@ public class MyListsFragment extends Fragment
                 });
     }
 
-    @Override
+    //@OnItemSelected(R.id.icon_favicon)
+    //@Optional
+    @OnClick(R.id.icon_favicon)
     public void onClickFavoriteIcon(int position) {
 
         Exercice FavoriteExercice = mAdapter.getExerciceFromPosition(position);
@@ -157,10 +169,10 @@ public class MyListsFragment extends Fragment
 
         String mystr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_favorite_white_24dp, null).toString();
         Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
+
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
             UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
-
         }
     }
 

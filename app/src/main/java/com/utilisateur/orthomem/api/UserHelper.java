@@ -99,19 +99,6 @@ public class UserHelper {
                 });
 
         return isfavorite;
-
-
-        /*
-        boolean check_rate = newPost.containsKey("upvotes");
-
-        if(check_rate == true){
-                String disp_rate = newPost.get("upvotes").toString();
-                rate_count.setText(disp_rate);
-            }
-            else{
-                System.out.println("FAILED");
-            }
-         */
     }
 
 /*
@@ -139,7 +126,7 @@ public class UserHelper {
     // --- TOGGLE FAVORITE ---
     public static void toogleFavorite(String uid, String Exerciceid) {
 
-        if (isFavorite(uid, Exerciceid)) {
+        if (UserHelper.isFavorite(uid, Exerciceid)) {
             UserHelper.deleteFavorite(uid, Exerciceid);
         } else {
             UserHelper.addFavorite(uid, Exerciceid);

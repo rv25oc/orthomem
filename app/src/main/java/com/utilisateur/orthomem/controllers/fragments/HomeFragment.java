@@ -69,8 +69,11 @@ public class HomeFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_home, container, false);
+        View view = inflater.inflate(R.layout.activity_home, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+
+        //return inflater.inflate(R.layout.activity_home, container, false);
     }
 
     @Override
@@ -84,7 +87,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         mNavigation = this.getActivity().findViewById(R.id.navigation);
         mNavigation.setVisibility(GONE);

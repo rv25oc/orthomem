@@ -56,8 +56,11 @@ public class AddListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_addlist, container, false);
+        View view = inflater.inflate(R.layout.activity_addlist, container, false);
+        ButterKnife.bind(this, view);
+        return view;
 
+        //return inflater.inflate(R.layout.activity_addlist, container, false);
     }
 
     @Override

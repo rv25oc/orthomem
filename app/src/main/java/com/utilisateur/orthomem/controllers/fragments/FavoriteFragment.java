@@ -67,14 +67,16 @@ public class FavoriteFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_favorite, container, false);
+        View view = inflater.inflate(R.layout.activity_favorite, container, false);
+        ButterKnife.bind(this, view);
+        return view;
+        //return inflater.inflate(R.layout.activity_favorite, container, false);
     }
 
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ButterKnife.bind(this, view);
 
         mBdd = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();

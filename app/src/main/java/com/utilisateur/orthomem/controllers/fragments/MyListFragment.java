@@ -58,14 +58,16 @@ public class MyListFragment extends Fragment {
         @Override
         public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.activity_mylist, container, false);
+            View view = inflater.inflate(R.layout.activity_mylist, container, false);
+            ButterKnife.bind(this, view);
+            return view;
+
+            //return inflater.inflate(R.layout.activity_mylist, container, false);
         }
 
         @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-            ButterKnife.bind(this, view);
 
             mBdd = FirebaseFirestore.getInstance();
 
