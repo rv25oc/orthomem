@@ -24,7 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.utilisateur.orthomem.R;
-import com.utilisateur.orthomem.api.Bdd;
 import com.utilisateur.orthomem.model.User;
 
 import butterknife.BindView;
@@ -92,9 +91,6 @@ public class HomeFragment extends Fragment {
         mNavigation.setVisibility(GONE);
 
         mBdd = FirebaseFirestore.getInstance();
-
-        //mBdd = new Bdd().getInstance().initBdd();
-
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.signOut();

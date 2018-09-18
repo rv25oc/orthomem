@@ -19,7 +19,9 @@ public class WordListViewHolder extends RecyclerView.ViewHolder implements View.
     TextView mtextViewWordId;
     @BindView(R.id.word_label)
     TextView mtextViewWordLabel;
-    @BindView(R.id.word_checkbox) CheckBox mCheckboxWord;    // 1 - Declare our ImageButton
+    @BindView(R.id.word_checkbox)
+    CheckBox mCheckboxWord;    // 1 - Declare our ImageButton
+
     private WeakReference<WordListRecyclerViewAdapter.CheckBoxListener> callbackWeakRef;    // 2 - Declare a Weak Reference to our Callback
 
     public void updateWithWord(Word word, WordListRecyclerViewAdapter.CheckBoxListener callback) {
@@ -35,9 +37,15 @@ public class WordListViewHolder extends RecyclerView.ViewHolder implements View.
         if (callback != null) callback.onClickCheckBox(getAdapterPosition());
     }
 
+
     //itemView est la vue correspondante à 1 ligne de la liste
     public WordListViewHolder(View itemView) {
         super(itemView);
+
+        //Associations vues/valeurs
+        mtextViewWordId = itemView.findViewById(R.id.word_id);
+        mtextViewWordLabel = itemView.findViewById(R.id.word_label);
+        mCheckboxWord = itemView.findViewById(R.id.word_checkbox);
     }
 
     //puis ajouter une fonction pour remplir la cellule/les textViews en fonction d'un Mot

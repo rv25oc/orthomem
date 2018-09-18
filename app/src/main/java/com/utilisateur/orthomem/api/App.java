@@ -1,30 +1,30 @@
 package com.utilisateur.orthomem.api;
 
-
 import android.app.Application;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class Bdd extends Application {
+public class App extends Application {
     // Create the instance
-    private Bdd instance;
+    private static App instance;
 
-    private Bdd() {
+    public App() {
         // Constructor hidden because this is a singleton
     }
 
-    public Bdd getInstance() {
+    public static App getInstance() {
         if (instance == null) {
-            synchronized (Bdd.class) {
+            synchronized (App.class) {
                 if (instance == null)
-                    instance = new Bdd();
+                    instance = new App();
             }
         }
         // Return the instance
         return instance;
     }
 
-    public void initBdd() {
+    public void initFirebaseSdk() {
+        //FacebookSdk.sdkInitialize(getApplicationContext());
         FirebaseFirestore.getInstance();
     }
 }

@@ -161,7 +161,7 @@ public class MyListsFragment extends Fragment
 
     //@OnItemSelected(R.id.icon_favicon)
     //@Optional
-    @OnClick(R.id.icon_favicon)
+    //@OnClick(R.id.icon_favicon)
     public void onClickFavoriteIcon(int position) {
 
         Exercice FavoriteExercice = mAdapter.getExerciceFromPosition(position);

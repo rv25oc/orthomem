@@ -43,12 +43,12 @@ public class MyWordsFragment extends Fragment
         implements WordListRecyclerViewAdapter.CheckBoxListener {
 
     private static final String TAG = "";
-    @BindView(R.id.mylist_title)
+    @BindView(R.id.mywords_title)
     TextView mTitleTextView;
-    @BindView(R.id.mylist_status)
+    @BindView(R.id.mywords_status)
     TextView mStatusTextView;
-    @BindView(R.id.word_checkbox)
-    CheckBox mCheckBox;
+    //@BindView(R.id.word_checkbox)
+    //CheckBox mCheckBox;
     @BindView(R.id.mywords_submit_button)
     Button mSubmitButton;
     @BindView(R.id.myWordsRecyclerView)
