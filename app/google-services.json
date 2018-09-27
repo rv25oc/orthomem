@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "645870858303",
+    "firebase_url": "https://orthomem.firebaseio.com",
+    "project_id": "orthomem",
+    "storage_bucket": "orthomem.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:645870858303:android:ead0fe47a9348b91",
+        "android_client_info": {
+          "package_name": "com.utilisateur.orthomem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "645870858303-qj16kn9fqfj37lj98956cag33vim8286.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.utilisateur.orthomem",
+            "certificate_hash": "532974bc33d45cdd61563a10543fe338513ac55b"
+          }
+        },
+        {
+          "client_id": "645870858303-a13vesrilqe4pi08nvjirkveo43ocsgm.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "645870858303-a13vesrilqe4pi08nvjirkveo43ocsgm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqojglb-oJMWtwIzJQjjfziC4UTYY-x8c"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "645870858303-a13vesrilqe4pi08nvjirkveo43ocsgm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

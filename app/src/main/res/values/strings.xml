@@ -1,0 +1,95 @@
+<resources>
+
+    <string name="app_name">Orthomem</string>
+    <string name="status_init">status_init</string>
+
+    <!-- BottomNAvigationView-->
+    <string name="home_menu">Accueil</string>
+    <string name="favorite_menu">Mes favoris</string>
+    <string name="mylists_menu">Mes listes</string>
+    <string name="addlist_menu">Nouvelle liste</string>
+    <string name="parameters_menu">Paramètres</string>
+
+    <!-- Home Fragment-->
+    <string name="home_title">Orthomem</string>
+    <string name="home_desc">ORTHOMEM permet aux orthophonistes de proposer des exercices d\’entrainement personnalisés à leurs patients.</string>
+    <string name="home_welcome">Bienvenue\u00A0</string>
+    <string name="home_logout">Vous avez bien été déconnecté(e). </string>
+    <string name="home_submit">Se connecter en tant que :</string>
+    <string name="home_ortho">Orthophoniste</string>
+    <string name="home_isortho">\u00A0(Orthophoniste)</string>
+    <string name="home_patient">Patient</string>
+    <string name="home_ispatient">\u00A0(Patient)</string>
+
+    <!-- Login Fragment-->
+    <string name="login_title">Mon compte</string>
+    <string name="hint_email">votre email</string>
+    <string name="hint_password">votre mot de passe </string>
+    <string name="action_sign_in">Bienvenue </string>
+
+    <!-- Favorite Fragment-->
+    <string name="favorite_title">Mes favoris</string>
+    <string name="favorite_status">Chargement des listes...</string>
+    <string name="extra_label_failed">Problème de passage du nom de l\'utilisateur courant dans l'activité.</string>
+
+    <!-- Mylists Fragment-->
+    <string name="mylists_title">Mes listes</string>
+    <string name="mylists_status">Chargement des listes...</string>
+    <string name="mylists_nbofexercices">\u00A0liste(s) disponible(s)</string>
+    <string name="mylists_nbofwords">Nombre de mot(s) :\u00A0</string>
+
+    <!-- Mylist Fragment-->
+    <string name="mylist_title">Ma liste</string>
+    <string name="mylist_status">Nombre de mot(s) :\u00A0</string>
+    <!-- <string name="mylist_nbofwords">Nombre de mot(s) :\u00A0</string> -->
+    <string name="mylist_creadate">Date de création :\u00A0</string>
+    <string name="mylist_goal">Objectifs pédagogiques :\n</string>
+
+    <!-- AddList Fragment-->
+    <string name="addlist_title">Nouvelle liste</string>
+    <string name="hint_label_list">Nom de cette nouvelle liste *</string>
+    <string name="hint_goal_list">Objectifs pédagogiques \nde cette nouvelle liste *</string>
+    <string name="error_field_required">Ce champ est requis</string>
+    <string name="label_nbofsyllabes">Nombre de syllables des mots :</string>
+    <string name="label_nbofsyllabes0">Indifférent</string>
+    <string name="label_nbofsyllabes1">1</string>
+    <string name="label_nbofsyllabes2">2</string>
+    <string name="label_nbofsyllabes3">3</string>
+    <string name="label_nbofsyllabes4">4 et +</string>
+    <string name="addlist_selection_button">Ajouter des mots à cette liste</string>
+    <string name="addlist_selectedids_start">Contenu de votre liste :\u00A0</string>
+    <string name="addlist_selectedids_end">\u00A0mot(s)</string>
+    <string name="addlist_selectedlabels">Mot(s) sélectionné(s) :\u00A0</string>
+    <string name="ok_label">Valider</string>
+    <string name="dismiss_label">Annuler</string>
+    <string name="clear_all_label">Réinitialiser</string>
+    <string name="addlist_submit_button">Ajouter cette liste</string>
+    <string name="addlist_alert">Votre liste doit comporter au moins un mot.</string>
+
+    <!-- MyWords Fragment-->
+    <string name="mywords_status">"Chargement du lexique...</string>
+    <string name="mywords_title">OpenLexique</string>
+    <string name="mywords_submit">Valider</string>
+    <string name="mywords_status_fulllexique">\nNombre de mots du lexique :\u00A0</string>
+    <string name="mywords_status_partlexique_start">\nNombre de mots de\u00A0</string>
+    <string name="mywords_status_partlexique_middle">\u00A0syllabe(s) :\u00A0</string>
+    <string name="mywords_status_partlexique_middle_if4syllabes">\u00A0syllabe(s) et plus :\u00A0</string>
+    <string name="mywords_status_partlexique_end">\u00A0mot(s)</string>
+
+    <!-- Parameters Fragment-->
+    <string name="parameters_title">Paramètres</string>
+    <string name="myaccount_label">Mon compte</string>
+    <string name="updpassword_label">Modifier mon mot de passe</string>
+    <string name="preferences_label">Préférences</string>
+    <string name="logout_label">Se déconnecter</string>
+
+    <!-- Dependencies requierments-->
+    <string name="auth_failed">Authentication failed</string>
+    <string name="google_status_fmt">Google User: %s</string>
+    <string name="signed_out">ORTHOMEM : Bien déconnecté. Vous pouvez poser votre smartphone et reprendre une activité normale. ^^ </string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

@@ -1,0 +1,7 @@
+<resources>
+    <dimen name="activity_horizontal_margin">10dp</dimen>
+    <dimen name="activity_vertical_margin">10dp</dimen>
+    <dimen name="cornerRadius">12dp</dimen>
+    <dimen name="strokeWidth">1dp</dimen>
+    <dimen name="mylist_words_size">48sp</dimen>
+</resources>

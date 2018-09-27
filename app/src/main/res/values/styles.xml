@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="orthomem"  parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- <item name="android:displayOptions">homeAsUp</item> -->
+        <item name="android:displayOptions">showHome</item>
+        <item name="colorPrimary">@color/ortholightgreen</item>
+        <item name="colorPrimaryDark">@color/orthodarkgreen</item>
+        <item name="colorAccent">@color/orthopink</item>
+        <item name="android:colorBackground">@color/ortholightgrey</item>
+        <item name="android:navigationBarColor">@color/ortholightgreen</item>
+        <item name="android:navigationContentDescription">@color/orthomidgrey</item>
+        <item name="android:actionBarStyle">@color/orthodarkgrey</item>
+        <item name="android:colorPrimary">@color/ortholightgreen</item>
+        <item name="android:colorPrimaryDark">@color/ortholightgreen</item>
+        <item name="android:colorForeground">@color/orthodarkgrey</item>
+        <item name="android:colorAccent">@color/ortholightgreen</item>
+        <item name="android:statusBarColor">@color/ortholightgreen</item>
+        <item name="android:textColorPrimaryInverse">@color/ortholightgrey</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColorSecondary">@color/orthomidgrey</item>
+    </style>
+</resources>

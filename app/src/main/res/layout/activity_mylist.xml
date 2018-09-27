@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_mylist.xml-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".controllers.fragments.MyListFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="bottom"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mylist_title"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mylist_title"/>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/mylist_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mylist_status"
+        android:textColor="@color/orthomidgrey" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2">
+
+        <TextView
+            android:id="@+id/mylist_words"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="@dimen/mylist_words_size"
+            android:textStyle="bold" />
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <!--
+        <TextView
+            android:id="@+id/mylist_nbofwords"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:text="@string/mylist_nbofwords" />
+        -->
+
+        <TextView
+            android:id="@+id/mylist_creadate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:text="@string/mylist_creadate" />
+
+        <TextView
+            android:id="@+id/mylist_goal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/activity_vertical_margin"
+            android:text="@string/mylist_goal" />
+
+    </LinearLayout>
+</LinearLayout>
