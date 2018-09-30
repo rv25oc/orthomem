@@ -27,5 +27,7 @@ public class MyWordsActivity extends FragmentActivity {
             getSupportFragmentManager().beginTransaction().add(
                     android.R.id.content, myFragment).commit();
         }
+
     }
+
 }

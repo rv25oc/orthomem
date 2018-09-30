@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,6 +20,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
@@ -30,6 +30,7 @@ import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 
 public class MyListsFragment extends Fragment
@@ -82,7 +83,7 @@ public class MyListsFragment extends Fragment
 
         final ArrayList<Exercice> myExos = new ArrayList<>();
 
-        mBdd.collection("exercices").orderBy("label")
+        mBdd.collection("exercices").orderBy("creadate", Query.Direction.DESCENDING)
                 .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 
                     @Override
@@ -108,7 +109,6 @@ public class MyListsFragment extends Fragment
                                                 Log.w(TAG, "getId() : "+mydocument2.getId() + " => | mydocument2.get(field wordid) :" + mydocument2.get("wordid").toString());
 
                                                 myIdsList.add(mydocument2.get("wordid").toString());
-                                                //mStatusTextView.append(" | "+mydocument2.get("wordid").toString().substring(0,3));
                                             }
                                             Log.w(TAG, " mydocument2 myIdsList.size()  : "+myIdsList.size());
                                         }
@@ -118,9 +118,13 @@ public class MyListsFragment extends Fragment
                                         }
                                     }
                                 });
-                                myExos.add(new Exercice(mydocument.getId(),mydocument.get("label").toString(),mydocument.get("goal").toString(),myIdsList));
+
+                                Date mydate = mydocument.getDate("creadate");
+
+                                myExos.add(new Exercice(mydocument.getId(),mydocument.get("label").toString(),mydocument.get("goal").toString(), mydate, myIdsList));
                                 mStatusTextView.setText(myExos.size()+getResources().getString(R.string.mylists_nbofexercices));
                             }
+                            mAdapter.notifyDataSetChanged();
                         } else {
                             Log.w(TAG, "(task1) Error getting DocumentSnapshot Exercices.", task1.getException());
                             mStatusTextView.setText("ko1");

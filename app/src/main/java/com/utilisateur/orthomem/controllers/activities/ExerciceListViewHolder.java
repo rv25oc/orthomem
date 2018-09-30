@@ -13,6 +13,9 @@ import com.utilisateur.orthomem.adapters.ExerciceListRecyclerViewAdapter;
 import com.utilisateur.orthomem.model.Exercice;
 
 import java.lang.ref.WeakReference;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import butterknife.BindView;
 
@@ -20,6 +23,7 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
     private TextView mtextViewExerciceLabel;
     private TextView mtextViewExerciceGoal;
     private TextView mtextViewExerciceNbOfWords;
+    private TextView mtextViewExerciceCreadate;
     //private ImageButton mIconFavorite;
 
     @BindView(R.id.icon_favicon)
@@ -60,13 +64,21 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
         mIconFavorite = (ImageButton) itemView.findViewById(R.id.icon_favicon);
         mtextViewExerciceGoal = (TextView) itemView.findViewById(R.id.exercice_goal);
         mtextViewExerciceNbOfWords = (TextView) itemView.findViewById(R.id.exercice_nbofwords);
+        mtextViewExerciceNbOfWords.setText(R.string.mylists_nbofwords);
+        mtextViewExerciceCreadate = (TextView) itemView.findViewById(R.id.exercice_creadate);
+        mtextViewExerciceCreadate.setText(R.string.mylists_creadate);
     }
 
     //puis ajouter une fonction pour remplir la cellule/les textViews en fonction d'un Exercice
     public void bind(Exercice exercice){
         mtextViewExerciceLabel.setText(exercice.getLabel());
         mtextViewExerciceGoal.setText(exercice.getGoal());
-        if (exercice.getExercicewords() != null){mtextViewExerciceNbOfWords.setText("Nombre de mot(s) : "+exercice.getExercicewords().size());}
-        if (exercice.getCreadate() != null){mtextViewExerciceNbOfWords.append(" | Date de création : "+exercice.getCreadate().toString());}
+        mtextViewExerciceNbOfWords.append(""+exercice.getExercicewords().size());
+        mtextViewExerciceCreadate.append(""+convertDate(exercice.getCreadate()));
+    }
+
+    private String convertDate(Date date) {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy 'à' HH:mm");
+        return df.format(date);
     }
 }

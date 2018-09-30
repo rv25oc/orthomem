@@ -59,7 +59,7 @@ public class MyWordsFragment extends Fragment
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_mywords, container, false);
+        return inflater.inflate(R.layout.fragment_mywords, container, false);
     }
 
     @Override
@@ -153,10 +153,11 @@ public class MyWordsFragment extends Fragment
                                                 Log.w(TAG, mydocument.getId() + " => | " + mydocument.getData());
 
                                                 if((task.getResult().size()>0) & (NbOfSyllabes>0)) {
+                                                    /* String.format("machaine %s %s", NbOfSyllabes.toString(), 2e_variable )*/
                                                     mStatusTextView.setText(getResources().getString(R.string.mywords_status_partlexique_start) + NbOfSyllabes.toString() + getResources().getString(R.string.mywords_status_partlexique_middle) + Integer.toString(task.getResult().size()) + getResources().getString(R.string.mywords_status_partlexique_end));
 
                                                     if(NbOfSyllabes==4){
-                                                        //mStatusTextView.setText(getResources().getString(R.string.mywords_status_partlexique_start) + NbOfSyllabes.toString() + getResources().getString(R.string.mywords_status_partlexique_middle_if4syllabes) + Integer.toString(task.getResult().size()) + getResources().getString(R.string.mywords_status_partlexique_end));
+                                                        mStatusTextView.setText(getResources().getString(R.string.mywords_status_partlexique_start) + NbOfSyllabes.toString() + getResources().getString(R.string.mywords_status_partlexique_middle_if4syllabes) + Integer.toString(task.getResult().size()) + getResources().getString(R.string.mywords_status_partlexique_end));
                                                     }
                                                 }
                                                 else {
@@ -185,6 +186,7 @@ public class MyWordsFragment extends Fragment
                                                 }
                                                 mWordsList.add(new Word(mydocument.getId(), mydocument.get("label").toString(), (Long) mydocument.get("nbsyllabes"), (boolean) isselected));
                                             }
+                                            mAdapter.notifyDataSetChanged();
                                         } else {
                                             Log.w(TAG, "Error getting documents.", task.getException());
                                             mStatusTextView.setText(mStatusTextView.getText()+" : ko1 : " +task.getException());
@@ -201,6 +203,7 @@ public class MyWordsFragment extends Fragment
                 }
             }
         });
+
         mSubmitButton.setVisibility(View.VISIBLE);
     }
 

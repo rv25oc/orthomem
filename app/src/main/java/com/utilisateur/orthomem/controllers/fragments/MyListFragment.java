@@ -12,19 +12,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.model.Exercice;
-import com.utilisateur.orthomem.model.Word;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -54,7 +48,7 @@ public class MyListFragment extends Fragment {
         public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
             // Inflate the layout for this fragment
-            return inflater.inflate(R.layout.activity_mylist, container, false);
+            return inflater.inflate(R.layout.fragment_mylist, container, false);
         }
 
         @Override
@@ -79,7 +73,7 @@ public class MyListFragment extends Fragment {
             mTitleTextView = view.findViewById(R.id.mylist_title);
             mStatusTextView = view.findViewById(R.id.mylist_status);
             mWordsTextView = view.findViewById(R.id.mylist_words);
-            //mNbofwordsTextView = view.findViewById(R.id.mylist_nbofwords);
+            mNbofwordsTextView = view.findViewById(R.id.mylist_nbofwords);
             mCreadateTextView = view.findViewById(R.id.mylist_creadate);
             mGoalTextView = view.findViewById(R.id.mylist_goal);
 
@@ -90,22 +84,22 @@ public class MyListFragment extends Fragment {
 
             // receiving our object
             Exercice myExercice = (Exercice) myIntent.getSerializableExtra("EXERCICE");
-            mStatusTextView.setText(getContext().getResources().getString(R.string.mylist_status) +""+ myExercice.getExercicewords().size());
+            mStatusTextView.setText(getContext().getResources().getString(R.string.mylist_status));
             getWordsFromLexique(myExercice.getExercicewords());
             mTitleTextView.setText(myExercice.getLabel());
-            //mNbofwordsTextView.append("" + myExercice.getExercicewords().size());
+
+            mNbofwordsTextView.append("" + myExercice.getExercicewords().size());
 
             if (myExercice.getCreadate() != null) {
-                mCreadateTextView.setText(convertDateToHour(myExercice.getCreadate()));
+                mCreadateTextView.append(convertDate(myExercice.getCreadate()));
             }
-
             mGoalTextView.append(myExercice.getGoal());
 
         }
 
-    private String convertDateToHour(Date date) {
-        DateFormat dfTime = new SimpleDateFormat("HH:mm");
-        return dfTime.format(date);
+    private String convertDate(Date date) {
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy 'à' HH:mm");
+        return df.format(date);
     }
 
     private void getWordsFromLexique(final ArrayList<String> wordsidslist) {
@@ -123,11 +117,11 @@ public class MyListFragment extends Fragment {
                                     document.getData();
                                     Log.w(TAG, document.getId() + " => | " + document.getData());
                                     mWordsTextView.append("\n " + document.get("label"));
-                                    //mStatusTextView.setText("");
                                 } else {
                                     Log.w(TAG, "Error getting documents.", task.getException());
                                     mStatusTextView.setText(mStatusTextView.getText() + " : ko1 : " + task.getException());
                                 }
+                                mStatusTextView.setText("");
                             } else {
                                 Log.d(TAG, "No such document");
                                 mStatusTextView.setText(mStatusTextView.getText() + " : ko2 : " + task.getException());

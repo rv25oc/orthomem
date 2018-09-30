@@ -31,6 +31,7 @@ import com.utilisateur.orthomem.model.Exercice;
 import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Objects;
 
 
@@ -125,9 +126,9 @@ public class FavoriteFragment extends Fragment
                                                                 if (task3.isSuccessful()) {
                                                                     for (DocumentSnapshot mydocument3 : task3.getResult()) {
                                                                         mydocument3.getData();
-                                                                        Log.w(TAG, "getId() : " + mydocument3.getId() + " => | mydocument2.get(field wordid) :" + mydocument3.get("wordid").toString());
+                                                                        Log.w(TAG, "getId() : " + mydocument3.getId() + " => | mydocument3.get(field wordid) :" + mydocument3.get("wordid").toString());
                                                                         myIdsList.add(mydocument3.get("wordid").toString());
-                                                                        mStatusTextView.append(" | " + mydocument3.get("wordid").toString().substring(0, 3));
+                                                                        //mStatusTextView.append(" | " + mydocument3.get("wordid").toString().substring(0, 3));
                                                                     }
                                                                     Log.w(TAG, " mydocument2 myIdsList.size()  : " + myIdsList.size());
                                                                 } else {
@@ -136,11 +137,12 @@ public class FavoriteFragment extends Fragment
                                                                 }
                                                             }
                                                         });
-
-                                                        myExos.add(new Exercice(mydocument2.getId(), mydocument2.get("label").toString(), mydocument2.get("goal").toString(), myIdsList));
-                                                        Toast.makeText(getContext(), "myExos.size() =  " + myExos.size(), Toast.LENGTH_SHORT).show();
+                                                        Date mydate = mydocument2.getDate("creadate");
+                                                        myExos.add(new Exercice(mydocument2.getId(), mydocument2.get("label").toString(), mydocument2.get("goal").toString(), mydate, myIdsList));
+                                                        //Toast.makeText(getContext(), "myExos.size() =  " + myExos.size(), Toast.LENGTH_SHORT).show();
                                                         mStatusTextView.setText(myExos.size() + getResources().getString(R.string.mylists_nbofexercices));
                                                     }
+                                                    mAdapter.notifyDataSetChanged();
                                                 } else {
                                                     Log.w(TAG, "(task2) Error getting DocumentSnapshot Exercices", task2.getException());
                                                     mStatusTextView.setText("ko2");
@@ -164,7 +166,7 @@ public class FavoriteFragment extends Fragment
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Exercice clickedExercice = mAdapter.getExerciceFromPosition(position);
-                        Toast.makeText(getContext(), "You clicked on Exercice : " + clickedExercice.getId(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getContext(), "You clicked on Exercice : " + clickedExercice.getId(), Toast.LENGTH_SHORT).show();
                         startMyListActivity(clickedExercice);// Lancer l'activité MyList en passant l'exercice comme paramètre
                     }
                 });
@@ -179,7 +181,7 @@ public class FavoriteFragment extends Fragment
         String mystr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_favorite_white_24dp, null).toString();
         Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
         if (mAuth.getCurrentUser() != null) {
-            //UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
+            UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
         }
     }
 

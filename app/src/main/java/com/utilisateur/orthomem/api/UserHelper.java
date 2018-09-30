@@ -77,28 +77,26 @@ public class UserHelper {
         return UserHelper.getFavoritesCollection(uid).get();
     }
 
-    public static boolean isFavorite(String uid, String Exerciceid) {
+    // --- TOGGLE FAVORITE ---
+    public static void toogleFavorite(final String uid,final String exerciceid) {
 
-        isfavorite = false;
-
-        Query myQuery = UserHelper.getFavoritesCollection(uid).whereEqualTo("exerciceid", Exerciceid);
+        Query myQuery = UserHelper.getFavoritesCollection(uid).whereEqualTo("exerciceid", exerciceid);
         myQuery.get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (DocumentSnapshot mydocument : task.getResult()) {
-                                Log.w(TAG, "(task) DocumentSnapshot FavoriteExercice :" + mydocument.getData());
-                                mydocument.getData();
-                                isfavorite = true;//Flag favorite exists
+                            if (task.getResult().size()==0) {
+                                UserHelper.addFavorite(uid, exerciceid);
+                            }
+                            else{
+                                UserHelper.deleteFavorite(uid, exerciceid);
                             }
                         } else {
                             Log.w(TAG, "(task) Error getting DocumentSnapshot FavoriteExercice", task.getException());
                         }
                     }
                 });
-
-        return isfavorite;
         }
 
 /*
@@ -123,13 +121,5 @@ public class UserHelper {
         return UserHelper.getUsersCollection().document(uid).delete();
     }
 
-    // --- TOGGLE FAVORITE ---
-    public static void toogleFavorite(String uid, String Exerciceid) {
 
-        if (UserHelper.isFavorite(uid, Exerciceid)) {
-            UserHelper.deleteFavorite(uid, Exerciceid);
-        } else {
-            UserHelper.addFavorite(uid, Exerciceid);
-        }
-    }
 }

@@ -5,7 +5,6 @@ import com.google.firebase.Timestamp;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import com.google.firebase.firestore.ServerTimestamp;
 
 public class Exercice implements Serializable {
@@ -15,6 +14,14 @@ public class Exercice implements Serializable {
     private ArrayList<String> exercicewords;
     private Date creadate;
 
+
+    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date exerciceCreadate, ArrayList<String> wordsIdList) {
+        this.id = exerciceId;
+        this.label = exerciceLabel;
+        this.goal = exerciceGoal;
+        this.creadate = exerciceCreadate;
+        this.exercicewords = wordsIdList;
+    }
 
     public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, ArrayList<String> wordsIdList) {
         this.id = exerciceId;

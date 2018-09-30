@@ -1,12 +1,10 @@
 package com.utilisateur.orthomem.controllers.activities;
 
 
-import android.content.ClipData;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,10 +13,7 @@ import android.view.MenuItem;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
-import com.google.firebase.perf.FirebasePerformance;
-import com.google.firebase.perf.metrics.Trace;
 import com.utilisateur.orthomem.R;
-import com.utilisateur.orthomem.api.App;
 import com.utilisateur.orthomem.controllers.fragments.AddListFragment;
 import com.utilisateur.orthomem.controllers.fragments.FavoriteFragment;
 import com.utilisateur.orthomem.controllers.fragments.HomeFragment;
@@ -106,8 +101,6 @@ public class MainActivity extends /*FragmentActivity*/ AppCompatActivity {
 
         mNavigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         //mNavigation.setVisibility(GONE);
-
-        App.getInstance().initFirebaseSdk(); //SINGLETON PATTERN
 
         mBdd = FirebaseFirestore.getInstance();
         FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
