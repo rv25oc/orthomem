@@ -1,0 +1,718 @@
+@startuml
+
+title __APP's Class Diagram__\n
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class AddListActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class AddListFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    class BuildConfig {
+    }
+  }
+  
+
+  package com.domain.utilisateur.orthomem {
+    class ExampleInstrumentedTest {
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.model {
+      class Exercice {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.api {
+      class ExerciceHelper {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.adapters {
+      class ExerciceListRecyclerViewAdapter {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ExerciceListViewHolder {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ExerciceListViewHolder_ViewBinding {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class FavoriteActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class FavoriteFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class HomeActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class HomeFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.utils {
+      class ItemClickSupport {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class LoginActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class MainActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    class Manifest {
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class MyListActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyListFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class MyListsActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyListsFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class MyWordsActivity {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyWordsFragment {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class ParametersFragment {
+      }
+    }
+  }
+  
+
+  package me.zhanghai.android.materialprogressbar {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.tasks {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.common {
+    class R {
+    }
+  }
+  
+
+  package android.support.fragment {
+    class R {
+    }
+  }
+  
+
+  package com.crashlytics.android {
+    package com.crashlytics.android.answers {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.auth {
+    package com.google.android.gms.auth.api {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.firebase.ui.auth {
+    class R {
+    }
+  }
+  
+
+  package com.crashlytics.android {
+    class R {
+    }
+  }
+  
+
+  package android.support.v4 {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.stats {
+    class R {
+    }
+  }
+  
+
+  package android.support.mediacompat {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.tagmanager {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.analytics.connector {
+      package com.google.firebase.analytics.connector.impl {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package android.support.v7.cardview {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.flags {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.base {
+    class R {
+    }
+  }
+  
+
+  package android.support.coreui {
+    class R {
+    }
+  }
+  
+
+  package com.crashlytics.android {
+    package com.crashlytics.android.core {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.graphics.drawable {
+    package android.support.graphics.drawable.animated {
+      class R {
+      }
+    }
+  }
+  
+
+  package butterknife {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.tagmanager {
+    package com.google.android.gms.tagmanager.impl {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.extensions {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.graphics.drawable {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.analyticsservices {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.measurement.api {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.measurement_base {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.analytics.connector {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.firestore {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.firebase.ui.common {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.measurement {
+      package com.google.firebase.measurement_impl {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.ads_identifier {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.iid {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.measurement {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.perf {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.protolitewellknowntypes {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.v7.recyclerview {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.auth {
+    package com.google.android.gms.auth.api {
+      package com.google.android.gms.auth.api.phone {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package com.firebase.ui.firestore {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.phenotype {
+    class R {
+    }
+  }
+  
+
+  package android.support.design {
+    class R {
+    }
+  }
+  
+
+  package android.support.customtabs {
+    class R {
+    }
+  }
+  
+
+  package io.fabric.sdk.android {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.auth {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.livedata {
+      package android.arch.lifecycle.livedata.core {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.auth {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.transition {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.auth {
+      package com.google.firebase.auth.internal {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.firebase_core {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.v7.appcompat {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.iid {
+      package com.google.firebase.iid.internal {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package android.support.constraint {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.database.collection {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.clearcut {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.livedata {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.arch.core {
+    class R {
+    }
+  }
+  
+
+  package com.crashlytics.android {
+    package com.crashlytics.android.beta {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.coreutils {
+    class R {
+    }
+  }
+  
+
+  package android.support.compat {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.viewmodel {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.model {
+      class User {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.api {
+      class UserHelper {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.model {
+      class Word {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.adapters {
+      class WordListRecyclerViewAdapter {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class WordListViewHolder {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class WordListViewHolder_ViewBinding {
+      }
+    }
+  }
+  
+
+  AddListActivity -up-|> FragmentActivity
+  AddListFragment -up-|> Fragment
+  Exercice -up-|> Serializable
+  ExerciceListRecyclerViewAdapter -up-|> Adapter
+  ExerciceListRecyclerViewAdapter o-- FavoriteIconListener : mCallback
+  ExerciceListViewHolder -up-|> OnClickListener
+  ExerciceListViewHolder -up-|> ViewHolder
+  ExerciceListViewHolder_ViewBinding -up-|> Unbinder
+  ExerciceListViewHolder_ViewBinding o-- ExerciceListViewHolder : target
+  FavoriteActivity -up-|> FragmentActivity
+  FavoriteFragment -up-|> FavoriteIconListener
+  FavoriteFragment -up-|> Fragment
+  FavoriteFragment o-- ExerciceListRecyclerViewAdapter : mAdapter
+  HomeActivity -up-|> FragmentActivity
+  HomeFragment -up-|> Fragment
+  ItemClickSupport o-- OnItemClickListener : mOnItemClickListener
+  ItemClickSupport o-- OnItemLongClickListener : mOnItemLongClickListener
+  LoginActivity -up-|> FragmentActivity
+  MainActivity -up-|> AppCompatActivity
+  MainActivity o-- MyListFragment : myListFragment
+  MyListActivity -up-|> FragmentActivity
+  MyListFragment -up-|> Fragment
+  MyListsActivity -up-|> FragmentActivity
+  MyListsFragment -up-|> FavoriteIconListener
+  MyListsFragment -up-|> Fragment
+  MyListsFragment o-- ExerciceListRecyclerViewAdapter : mAdapter
+  MyWordsActivity -up-|> FragmentActivity
+  MyWordsActivity o-- WordListRecyclerViewAdapter : adapter
+  MyWordsFragment -up-|> CheckBoxListener
+  MyWordsFragment -up-|> Fragment
+  MyWordsFragment o-- WordListRecyclerViewAdapter : mAdapter
+  ParametersFragment -up-|> Fragment
+  WordListRecyclerViewAdapter -up-|> Adapter
+  WordListRecyclerViewAdapter o-- CheckBoxListener : mCallback
+  WordListViewHolder -up-|> OnClickListener
+  WordListViewHolder -up-|> ViewHolder
+  WordListViewHolder_ViewBinding -up-|> Unbinder
+  WordListViewHolder_ViewBinding o-- WordListViewHolder : target
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

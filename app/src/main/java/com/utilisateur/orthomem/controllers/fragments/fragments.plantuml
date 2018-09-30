@@ -1,0 +1,682 @@
+@startuml
+
+title __FRAGMENTS's Class Diagram__\n
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class AddListFragment {
+          {static} + MYWORDS_ACTIVITY_REQUEST_CODE : int
+          {static} - TAG : String
+          - mLabel_EditText : EditText
+          - mGoal_EditText : EditText
+          - mNbOfSyllabes_SeekBar : SeekBar
+          - mSelectionButton : Button
+          - mSubmitButton : Button
+          - mSelected_id_TextView : TextView
+          - mSelected_label_TextView : TextView
+          - mListIds : ArrayList<String>
+          - mListLabels : ArrayList<String>
+          - mBdd : FirebaseFirestore
+          + AddListFragment()
+          + onCreateView()
+          + onActivityResult()
+          + onViewCreated()
+          - startNextActivity()
+          - showToast()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class FavoriteFragment {
+          {static} - TAG : String
+          - mStatusTextView : TextView
+          - mTitleTextView : TextView
+          - mAuth : FirebaseAuth
+          - mBdd : FirebaseFirestore
+          - mRecyclerView : RecyclerView
+          - mFavoritesExos : ArrayList<Exercice>
+          - mUserID : String
+          - mUserLabel : String
+          + FavoriteFragment()
+          + onCreateView()
+          + onViewCreated()
+          - LoadFavoritesExos()
+          - configureOnClickRecyclerView()
+          + onClickFavoriteIcon()
+          - startMyListActivity()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class HomeFragment {
+          {static} - TAG : String
+          - mLoginLayout : LinearLayout
+          - mNavigation : BottomNavigationView
+          - mLogo : ImageView
+          - mStatusTextView : TextView
+          - mLoginProgressBar : ProgressBar
+          - mOrthoButton : Button
+          - mPatientButton : Button
+          - mAuth : FirebaseAuth
+          - mBdd : FirebaseFirestore
+          - mUser : FirebaseUser
+          + HomeFragment()
+          + onCreateView()
+          + onResume()
+          + onViewCreated()
+          - signIn()
+          - updateUI()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyListFragment {
+          {static} - TAG : String
+          - mWordsTextView : TextView
+          - mTitleTextView : TextView
+          - mStatusTextView : TextView
+          - mNbofwordsTextView : TextView
+          - mCreadateTextView : TextView
+          - mGoalTextView : TextView
+          - mBdd : FirebaseFirestore
+          + MyListFragment()
+          + onCreateView()
+          + onViewCreated()
+          - convertDateToHour()
+          - getWordsFromLexique()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyListsFragment {
+          - mAuth : FirebaseAuth
+          {static} - TAG : String
+          - mStatusTextView : TextView
+          - mRecyclerView : RecyclerView
+          - mExos : ArrayList<Exercice>
+          - mBdd : FirebaseFirestore
+          + MyListsFragment()
+          + onCreateView()
+          + onViewCreated()
+          - LoadExos()
+          - configureOnClickRecyclerView()
+          + onClickFavoriteIcon()
+          - startMyListActivity()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class MyWordsFragment {
+          {static} - TAG : String
+          - mStatusTextView : TextView
+          - mTitleTextView : TextView
+          - mSubmitButton : Button
+          - mNbOfSyllabes : Integer
+          - mRecyclerView : RecyclerView
+          - mCheckBox : CheckBox
+          - mWordsList : ArrayList<Word>
+          - mSelectedWords : ArrayList<Word>
+          - mListIds : ArrayList<String>
+          - mListLabels : ArrayList<String>
+          - mBdd : FirebaseFirestore
+          + MyWordsFragment()
+          + onCreateView()
+          + onViewCreated()
+          - startNextActivity()
+          + getLexique()
+          + onClickCheckBox()
+          - showToast()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.fragments {
+      class ParametersFragment {
+          - mLogoutButton : Button
+          - mAuth : FirebaseAuth
+          + ParametersFragment()
+          + onCreateView()
+          + onViewCreated()
+          - startNextActivity()
+      }
+    }
+  }
+  
+
+  package android.support.v4 {
+    class AnimationInfo {
+        ~ mAnimatingAway : View
+        ~ mAnimator : Animator
+        ~ mStateAfterAnimating : int
+        ~ mNextAnim : int
+        ~ mNextTransition : int
+        ~ mNextTransitionStyle : int
+        - mEnterTransition : Object
+        - mReturnTransition : Object
+        - mExitTransition : Object
+        - mReenterTransition : Object
+        - mSharedElementEnterTransition : Object
+        - mSharedElementReturnTransition : Object
+        - mAllowReturnTransitionOverlap : Boolean
+        - mAllowEnterTransitionOverlap : Boolean
+        ~ mEnterTransitionCallback : SharedElementCallback
+        ~ mExitTransitionCallback : SharedElementCallback
+        ~ mEnterTransitionPostponed : boolean
+        ~ mStartEnterTransitionListener : OnStartEnterTransitionListener
+        ~ mIsHideReplaced : boolean
+        ~ AnimationInfo()
+    }
+  }
+  
+
+  package android.support.v4 {
+    interface OnStartEnterTransitionListener {
+        {abstract} + onStartEnterTransition()
+        {abstract} + startListening()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class InstantiationException {
+        + InstantiationException()
+    }
+  }
+  
+
+  package android.support.v4 {
+    class SavedState {
+        ~ mState : Bundle
+        {static} + CREATOR : Creator<SavedState>
+        ~ SavedState()
+        ~ SavedState()
+        + describeContents()
+        + writeToParcel()
+    }
+  }
+  
+
+  interface ClassLoaderCreator {
+      {abstract} + createFromParcel()
+  }
+  
+
+  interface Creator {
+      {abstract} + createFromParcel()
+      {abstract} + newArray()
+  }
+  
+
+  AddListFragment -up-|> Fragment
+  AddListFragment +-down- AnimationInfo
+  AddListFragment +-down- OnStartEnterTransitionListener
+  AddListFragment +-down- InstantiationException
+  AddListFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  FavoriteFragment -up-|> FavoriteIconListener
+  FavoriteFragment -up-|> Fragment
+  FavoriteFragment o-- ExerciceListRecyclerViewAdapter : mAdapter
+  FavoriteFragment +-down- AnimationInfo
+  FavoriteFragment +-down- OnStartEnterTransitionListener
+  FavoriteFragment +-down- InstantiationException
+  FavoriteFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  HomeFragment -up-|> Fragment
+  HomeFragment +-down- AnimationInfo
+  HomeFragment +-down- OnStartEnterTransitionListener
+  HomeFragment +-down- InstantiationException
+  HomeFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  MyListFragment -up-|> Fragment
+  MyListFragment +-down- AnimationInfo
+  MyListFragment +-down- OnStartEnterTransitionListener
+  MyListFragment +-down- InstantiationException
+  MyListFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  MyListsFragment -up-|> FavoriteIconListener
+  MyListsFragment -up-|> Fragment
+  MyListsFragment o-- ExerciceListRecyclerViewAdapter : mAdapter
+  MyListsFragment +-down- AnimationInfo
+  MyListsFragment +-down- OnStartEnterTransitionListener
+  MyListsFragment +-down- InstantiationException
+  MyListsFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  MyWordsFragment -up-|> CheckBoxListener
+  MyWordsFragment -up-|> Fragment
+  MyWordsFragment o-- WordListRecyclerViewAdapter : mAdapter
+  MyWordsFragment +-down- AnimationInfo
+  MyWordsFragment +-down- OnStartEnterTransitionListener
+  MyWordsFragment +-down- InstantiationException
+  MyWordsFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+  ParametersFragment -up-|> Fragment
+  ParametersFragment +-down- AnimationInfo
+  ParametersFragment +-down- OnStartEnterTransitionListener
+  ParametersFragment +-down- InstantiationException
+  ParametersFragment +-down- SavedState
+  SavedState -up-|> Parcelable
+  SavedState +-down- ClassLoaderCreator
+  SavedState +-down- Creator
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml
