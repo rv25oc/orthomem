@@ -11,7 +11,7 @@ public class MyListActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mylist);
+        setContentView(R.layout.fragment_mylist);
 
         if (savedInstanceState == null) {
             // During initial setup, plug in the details fragment : https://stackoverflow.com/questions/11387740/where-how-to-getintent-getextras-in-an-android-fragment

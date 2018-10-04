@@ -19,7 +19,6 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,7 +31,6 @@ import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 
 public class FavoriteFragment extends Fragment
@@ -58,7 +56,7 @@ public class FavoriteFragment extends Fragment
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_favorite, container, false);
+        return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
 

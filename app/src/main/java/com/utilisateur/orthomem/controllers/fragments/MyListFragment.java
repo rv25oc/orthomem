@@ -55,21 +55,6 @@ public class MyListFragment extends Fragment {
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
 
-            /*
-            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-            this.getActivity().setSupportActionBar(toolbar);
-
-            setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
-
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-*/
-
             mTitleTextView = view.findViewById(R.id.mylist_title);
             mStatusTextView = view.findViewById(R.id.mylist_status);
             mWordsTextView = view.findViewById(R.id.mylist_words);
