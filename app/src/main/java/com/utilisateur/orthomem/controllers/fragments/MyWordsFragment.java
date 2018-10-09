@@ -87,8 +87,6 @@ public class MyWordsFragment extends Fragment
 
         mBdd = FirebaseFirestore.getInstance();
 
-        //mWordsList.add(new Word("xxx","mylabel", (long)3));
-
         getLexique(mNbOfSyllabes);
 
         mRecyclerView = view.findViewById(R.id.myWordsRecyclerView);
@@ -110,7 +108,6 @@ public class MyWordsFragment extends Fragment
             mListLabels.add(mSelectedWords.get(i).getLabel());
         }
 
-        // End the activity
         Intent myintent = new Intent(getActivity(), AddListActivity.class);
         myintent.putExtra("NEWIDS", mListIds);
         myintent.putExtra("NEWLABELS", mListLabels);
@@ -232,37 +229,10 @@ public class MyWordsFragment extends Fragment
                 mSelectedWords.add(CheckedWord);
                 action = "ajout";
             }
-            //showToast("Mot cliqué : " + CheckedWord.getLabel() + "\n mSelectedWords.size() : " + mSelectedWords.size() + "\n Type d'action : " + action);
         }
     }
 
     private void showToast(String message){
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
-
-
 }
-
-
-
-
-
-
-//configureOnClickRecyclerView();
- /*
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-    private void configureOnClickRecyclerView(){
-        ItemClickSupport.addTo(mRecyclerView, R.layout.word_recyclerview_row)
-                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
-                    @Override
-                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        // 1 - Get Word from adapter
-                        Word clickedWord = mAdapter.getWordFromPosition(position);
-                        // Action au clic sur un mot
-                        Toast.makeText(getContext(), "You clicked on Word : "+clickedWord.getId(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-    }
-*/

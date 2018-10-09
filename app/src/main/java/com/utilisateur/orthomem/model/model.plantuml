@@ -12,8 +12,6 @@ title __MODEL's Class Diagram__\n
           - creadate : Date
           + Exercice()
           + Exercice()
-          + Exercice()
-          + Exercice()
           + getId()
           + setId()
           + getLabel()

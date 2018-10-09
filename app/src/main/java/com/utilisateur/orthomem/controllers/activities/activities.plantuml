@@ -52,23 +52,6 @@ title __ACTIVITIES's Class Diagram__\n
 
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.controllers.activities {
-      class ExerciceListViewHolder {
-          - mtextViewExerciceLabel : TextView
-          - mtextViewExerciceGoal : TextView
-          - mtextViewExerciceNbOfWords : TextView
-          ~ mIconFavorite : ImageButton
-          - callbackWeakRef : WeakReference<FavoriteIconListener>
-          + updateWithExercice()
-          + onClick()
-          + ExerciceListViewHolder()
-          + bind()
-      }
-    }
-  }
-  
-
-  package com.utilisateur.orthomem {
-    package com.utilisateur.orthomem.controllers.activities {
       class FavoriteActivity {
           # onCreate()
       }
@@ -118,54 +101,6 @@ title __ACTIVITIES's Class Diagram__\n
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.controllers.activities {
       class HomeActivity {
-          # onCreate()
-      }
-    }
-  }
-  
-
-  package android.support.v4 {
-    class HostCallbacks {
-        + HostCallbacks()
-        + onDump()
-        + onShouldSaveFragmentState()
-        + onGetLayoutInflater()
-        + onGetHost()
-        + onSupportInvalidateOptionsMenu()
-        + onStartActivityFromFragment()
-        + onStartActivityFromFragment()
-        + onStartIntentSenderFromFragment()
-        + onRequestPermissionsFromFragment()
-        + onShouldShowRequestPermissionRationale()
-        + onHasWindowAnimations()
-        + onGetWindowAnimations()
-        + onAttachFragment()
-        + onFindViewById()
-        + onHasView()
-    }
-  }
-  
-
-  package android.support.v4 {
-    class NonConfigurationInstances {
-        ~ custom : Object
-        ~ viewModelStore : ViewModelStore
-        ~ fragments : FragmentManagerNonConfig
-        ~ NonConfigurationInstances()
-    }
-  }
-  
-
-  package android.support.v4 {
-    class ExtraData {
-        + ExtraData()
-    }
-  }
-  
-
-  package com.utilisateur.orthomem {
-    package com.utilisateur.orthomem.controllers.activities {
-      class LoginActivity {
           # onCreate()
       }
     }
@@ -412,14 +347,33 @@ title __ACTIVITIES's Class Diagram__\n
 
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.controllers.activities {
-      class WordListViewHolder {
+      class ViewHolderExerciceList {
+          - mtextViewExerciceLabel : TextView
+          - mtextViewExerciceGoal : TextView
+          - mtextViewExerciceNbOfWords : TextView
+          - mtextViewExerciceCreadate : TextView
+          ~ mIconFavorite : ImageButton
+          - callbackWeakRef : WeakReference<FavoriteIconListener>
+          + updateWithExercice()
+          + onClick()
+          + ViewHolderExerciceList()
+          + bind()
+          - convertDate()
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ViewHolderWordList {
           - mtextViewWordId : TextView
           - mtextViewWordLabel : TextView
           ~ mCheckboxWord : CheckBox
           - callbackWeakRef : WeakReference<CheckBoxListener>
           + updateWithWord()
           + onClick()
-          + WordListViewHolder()
+          + ViewHolderWordList()
           + bind()
       }
     }
@@ -431,8 +385,6 @@ title __ACTIVITIES's Class Diagram__\n
   AddListActivity +-down- NonConfigurationInstances
   AddListActivity +-down- ExtraData
   HostCallbacks -up-|> FragmentHostCallback
-  ExerciceListViewHolder -up-|> OnClickListener
-  ExerciceListViewHolder -up-|> ViewHolder
   FavoriteActivity -up-|> FragmentActivity
   FavoriteActivity +-down- HostCallbacks
   FavoriteActivity +-down- NonConfigurationInstances
@@ -442,11 +394,6 @@ title __ACTIVITIES's Class Diagram__\n
   HomeActivity +-down- HostCallbacks
   HomeActivity +-down- NonConfigurationInstances
   HomeActivity +-down- ExtraData
-  HostCallbacks -up-|> FragmentHostCallback
-  LoginActivity -up-|> FragmentActivity
-  LoginActivity +-down- HostCallbacks
-  LoginActivity +-down- NonConfigurationInstances
-  LoginActivity +-down- ExtraData
   HostCallbacks -up-|> FragmentHostCallback
   MainActivity -up-|> AppCompatActivity
   MainActivity o-- MyListFragment : myListFragment
@@ -465,13 +412,14 @@ title __ACTIVITIES's Class Diagram__\n
   MyListsActivity +-down- ExtraData
   HostCallbacks -up-|> FragmentHostCallback
   MyWordsActivity -up-|> FragmentActivity
-  MyWordsActivity o-- WordListRecyclerViewAdapter : adapter
   MyWordsActivity +-down- HostCallbacks
   MyWordsActivity +-down- NonConfigurationInstances
   MyWordsActivity +-down- ExtraData
   HostCallbacks -up-|> FragmentHostCallback
-  WordListViewHolder -up-|> OnClickListener
-  WordListViewHolder -up-|> ViewHolder
+  ViewHolderExerciceList -up-|> OnClickListener
+  ViewHolderExerciceList -up-|> ViewHolder
+  ViewHolderWordList -up-|> OnClickListener
+  ViewHolderWordList -up-|> ViewHolder
 
 
 right footer

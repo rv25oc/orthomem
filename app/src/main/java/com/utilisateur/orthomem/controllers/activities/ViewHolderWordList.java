@@ -13,7 +13,7 @@ import java.lang.ref.WeakReference;
 
 import butterknife.BindView;
 
-public class WordListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ViewHolderWordList extends RecyclerView.ViewHolder implements View.OnClickListener{
     private TextView mtextViewWordId;
     private TextView mtextViewWordLabel;
     @BindView(R.id.word_checkbox) CheckBox mCheckboxWord;    // 1 - Declare our ImageButton
@@ -33,7 +33,7 @@ public class WordListViewHolder extends RecyclerView.ViewHolder implements View.
     }
 
     //itemView est la vue correspondante à 1 ligne de la liste
-    public WordListViewHolder(View itemView) {
+    public ViewHolderWordList(View itemView) {
         super(itemView);
 
         //Associations vues/valeurs

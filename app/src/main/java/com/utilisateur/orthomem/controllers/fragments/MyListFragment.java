@@ -36,10 +36,6 @@ public class MyListFragment extends Fragment {
     private TextView mCreadateTextView;
     private TextView mGoalTextView;
     private FirebaseFirestore mBdd;
-    /*
-        @BindView (R.id.my_toolbar)
-        Toolbar toolbar ;
-    */
 
     public MyListFragment() {/*Required empty public constructor*/}
 

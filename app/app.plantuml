@@ -56,14 +56,6 @@ title __APP's Class Diagram__\n
 
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.controllers.activities {
-      class ExerciceListViewHolder {
-      }
-    }
-  }
-  
-
-  package com.utilisateur.orthomem {
-    package com.utilisateur.orthomem.controllers.activities {
       class ExerciceListViewHolder_ViewBinding {
       }
     }
@@ -105,14 +97,6 @@ title __APP's Class Diagram__\n
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.utils {
       class ItemClickSupport {
-      }
-    }
-  }
-  
-
-  package com.utilisateur.orthomem {
-    package com.utilisateur.orthomem.controllers.activities {
-      class LoginActivity {
       }
     }
   }
@@ -188,7 +172,7 @@ title __APP's Class Diagram__\n
   }
   
 
-  package me.zhanghai.android.materialprogressbar {
+  package com.google.android.gms.measurement_base {
     class R {
     }
   }
@@ -200,40 +184,34 @@ title __APP's Class Diagram__\n
   }
   
 
+  package com.google.android.gms.tagmanager {
+    class R {
+    }
+  }
+  
+
+  package android.support.v7.recyclerview {
+    class R {
+    }
+  }
+  
+
   package com.google.firebase {
     class R {
     }
   }
   
 
-  package com.google.android.gms.common {
-    class R {
-    }
-  }
-  
-
-  package android.support.fragment {
-    class R {
-    }
-  }
-  
-
-  package com.crashlytics.android {
-    package com.crashlytics.android.answers {
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.livedata {
       class R {
       }
     }
   }
   
 
-  package com.utilisateur.orthomem {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.auth {
-    package com.google.android.gms.auth.api {
+  package com.google.firebase {
+    package com.google.firebase.measurement {
       class R {
       }
     }
@@ -246,32 +224,16 @@ title __APP's Class Diagram__\n
   }
   
 
-  package com.crashlytics.android {
+  package android.support.graphics.drawable {
     class R {
     }
   }
   
 
-  package android.support.v4 {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.stats {
-    class R {
-    }
-  }
-  
-
-  package android.support.mediacompat {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.tagmanager {
-    class R {
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.viewmodel {
+      class R {
+      }
     }
   }
   
@@ -286,47 +248,7 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.support.v7.cardview {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.flags {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.base {
-    class R {
-    }
-  }
-  
-
-  package android.support.coreui {
-    class R {
-    }
-  }
-  
-
-  package com.crashlytics.android {
-    package com.crashlytics.android.core {
-      class R {
-      }
-    }
-  }
-  
-
-  package android.support.graphics.drawable {
-    package android.support.graphics.drawable.animated {
-      class R {
-      }
-    }
-  }
-  
-
-  package butterknife {
+  package io.fabric.sdk.android {
     class R {
     }
   }
@@ -340,15 +262,33 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.arch.lifecycle {
-    package android.arch.lifecycle.extensions {
+  package android.support.customtabs {
+    class R {
+    }
+  }
+  
+
+  package com.firebase.ui.firestore {
+    class R {
+    }
+  }
+  
+
+  package me.zhanghai.android.materialprogressbar {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.database.collection {
       class R {
       }
     }
   }
   
 
-  package android.support.graphics.drawable {
+  package android.support.v7.cardview {
     class R {
     }
   }
@@ -360,19 +300,13 @@ title __APP's Class Diagram__\n
   }
   
 
-  package com.google.android.gms.analyticsservices {
+  package com.google.android.gms.phenotype {
     class R {
     }
   }
   
 
-  package com.google.android.gms.measurement.api {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.measurement_base {
+  package com.crashlytics.android {
     class R {
     }
   }
@@ -387,20 +321,6 @@ title __APP's Class Diagram__\n
   
 
   package com.google.firebase {
-    package com.google.firebase.firestore {
-      class R {
-      }
-    }
-  }
-  
-
-  package com.firebase.ui.common {
-    class R {
-    }
-  }
-  
-
-  package com.google.firebase {
     package com.google.firebase.measurement {
       package com.google.firebase.measurement_impl {
         class R {
@@ -410,92 +330,36 @@ title __APP's Class Diagram__\n
   }
   
 
-  package com.google.android.gms.ads_identifier {
+  package android.support.transition {
     class R {
     }
   }
   
 
-  package com.google.firebase {
-    package com.google.firebase.iid {
+  package com.crashlytics.android {
+    package com.crashlytics.android.answers {
       class R {
       }
     }
   }
   
 
-  package com.google.firebase {
-    package com.google.firebase.measurement {
-      class R {
-      }
+  package android.support.fragment {
+    class R {
     }
   }
   
 
-  package com.google.firebase {
-    package com.google.firebase.perf {
-      class R {
-      }
+  package android.support.coreutils {
+    class R {
     }
   }
   
 
   package com.google.firebase {
-    package com.google.firebase.protolitewellknowntypes {
+    package com.google.firebase.firebase_core {
       class R {
       }
-    }
-  }
-  
-
-  package android.support.v7.recyclerview {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.auth {
-    package com.google.android.gms.auth.api {
-      package com.google.android.gms.auth.api.phone {
-        class R {
-        }
-      }
-    }
-  }
-  
-
-  package com.firebase.ui.firestore {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.phenotype {
-    class R {
-    }
-  }
-  
-
-  package android.support.design {
-    class R {
-    }
-  }
-  
-
-  package android.support.customtabs {
-    class R {
-    }
-  }
-  
-
-  package io.fabric.sdk.android {
-    class R {
-    }
-  }
-  
-
-  package com.google.android.gms.auth {
-    class R {
     }
   }
   
@@ -518,8 +382,22 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.support.transition {
+  package butterknife {
     class R {
+    }
+  }
+  
+
+  package android.support.v4 {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.protolitewellknowntypes {
+      class R {
+      }
     }
   }
   
@@ -535,15 +413,9 @@ title __APP's Class Diagram__\n
   
 
   package com.google.firebase {
-    package com.google.firebase.firebase_core {
+    package com.google.firebase.iid {
       class R {
       }
-    }
-  }
-  
-
-  package android.support.v7.appcompat {
-    class R {
     }
   }
   
@@ -558,35 +430,13 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.support.constraint {
+  package android.support.mediacompat {
     class R {
     }
   }
   
 
-  package com.google.firebase {
-    package com.google.firebase.database.collection {
-      class R {
-      }
-    }
-  }
-  
-
-  package com.google.android.gms.clearcut {
-    class R {
-    }
-  }
-  
-
-  package android.arch.lifecycle {
-    package android.arch.lifecycle.livedata {
-      class R {
-      }
-    }
-  }
-  
-
-  package android.arch.core {
+  package com.firebase.ui.common {
     class R {
     }
   }
@@ -600,8 +450,98 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.support.coreutils {
+  package com.google.android.gms.auth {
+    package com.google.android.gms.auth.api {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.constraint {
     class R {
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    class R {
+    }
+  }
+  
+
+  package android.arch.core {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.clearcut {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.base {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.measurement.api {
+    class R {
+    }
+  }
+  
+
+  package android.arch.lifecycle {
+    package android.arch.lifecycle.extensions {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.auth {
+    package com.google.android.gms.auth.api {
+      package com.google.android.gms.auth.api.phone {
+        class R {
+        }
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.flags {
+    class R {
+    }
+  }
+  
+
+  package android.support.v7.appcompat {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.perf {
+      class R {
+      }
+    }
+  }
+  
+
+  package android.support.coreui {
+    class R {
+    }
+  }
+  
+
+  package android.support.graphics.drawable {
+    package android.support.graphics.drawable.animated {
+      class R {
+      }
     }
   }
   
@@ -612,8 +552,52 @@ title __APP's Class Diagram__\n
   }
   
 
-  package android.arch.lifecycle {
-    package android.arch.lifecycle.viewmodel {
+  package com.google.android.gms.stats {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.ads_identifier {
+    class R {
+    }
+  }
+  
+
+  package android.support.design {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.common {
+    class R {
+    }
+  }
+  
+
+  package com.crashlytics.android {
+    package com.crashlytics.android.core {
+      class R {
+      }
+    }
+  }
+  
+
+  package com.google.android.gms.auth {
+    class R {
+    }
+  }
+  
+
+  package com.google.android.gms.analyticsservices {
+    class R {
+    }
+  }
+  
+
+  package com.google.firebase {
+    package com.google.firebase.firestore {
       class R {
       }
     }
@@ -637,6 +621,38 @@ title __APP's Class Diagram__\n
   
 
   package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ViewHolderExerciceList {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ViewHolderExerciceList_ViewBinding {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ViewHolderWordList {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
+    package com.utilisateur.orthomem.controllers.activities {
+      class ViewHolderWordList_ViewBinding {
+      }
+    }
+  }
+  
+
+  package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.model {
       class Word {
       }
@@ -647,14 +663,6 @@ title __APP's Class Diagram__\n
   package com.utilisateur.orthomem {
     package com.utilisateur.orthomem.adapters {
       class WordListRecyclerViewAdapter {
-      }
-    }
-  }
-  
-
-  package com.utilisateur.orthomem {
-    package com.utilisateur.orthomem.controllers.activities {
-      class WordListViewHolder {
       }
     }
   }
@@ -673,10 +681,7 @@ title __APP's Class Diagram__\n
   Exercice -up-|> Serializable
   ExerciceListRecyclerViewAdapter -up-|> Adapter
   ExerciceListRecyclerViewAdapter o-- FavoriteIconListener : mCallback
-  ExerciceListViewHolder -up-|> OnClickListener
-  ExerciceListViewHolder -up-|> ViewHolder
   ExerciceListViewHolder_ViewBinding -up-|> Unbinder
-  ExerciceListViewHolder_ViewBinding o-- ExerciceListViewHolder : target
   FavoriteActivity -up-|> FragmentActivity
   FavoriteFragment -up-|> FavoriteIconListener
   FavoriteFragment -up-|> Fragment
@@ -685,7 +690,6 @@ title __APP's Class Diagram__\n
   HomeFragment -up-|> Fragment
   ItemClickSupport o-- OnItemClickListener : mOnItemClickListener
   ItemClickSupport o-- OnItemLongClickListener : mOnItemLongClickListener
-  LoginActivity -up-|> FragmentActivity
   MainActivity -up-|> AppCompatActivity
   MainActivity o-- MyListFragment : myListFragment
   MyListActivity -up-|> FragmentActivity
@@ -695,17 +699,21 @@ title __APP's Class Diagram__\n
   MyListsFragment -up-|> Fragment
   MyListsFragment o-- ExerciceListRecyclerViewAdapter : mAdapter
   MyWordsActivity -up-|> FragmentActivity
-  MyWordsActivity o-- WordListRecyclerViewAdapter : adapter
   MyWordsFragment -up-|> CheckBoxListener
   MyWordsFragment -up-|> Fragment
   MyWordsFragment o-- WordListRecyclerViewAdapter : mAdapter
   ParametersFragment -up-|> Fragment
+  ViewHolderExerciceList -up-|> OnClickListener
+  ViewHolderExerciceList -up-|> ViewHolder
+  ViewHolderExerciceList_ViewBinding -up-|> Unbinder
+  ViewHolderExerciceList_ViewBinding o-- ViewHolderExerciceList : target
+  ViewHolderWordList -up-|> OnClickListener
+  ViewHolderWordList -up-|> ViewHolder
+  ViewHolderWordList_ViewBinding -up-|> Unbinder
+  ViewHolderWordList_ViewBinding o-- ViewHolderWordList : target
   WordListRecyclerViewAdapter -up-|> Adapter
   WordListRecyclerViewAdapter o-- CheckBoxListener : mCallback
-  WordListViewHolder -up-|> OnClickListener
-  WordListViewHolder -up-|> ViewHolder
   WordListViewHolder_ViewBinding -up-|> Unbinder
-  WordListViewHolder_ViewBinding o-- WordListViewHolder : target
 
 
 right footer

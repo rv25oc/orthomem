@@ -50,8 +50,6 @@ public class ParametersFragment extends Fragment {
     private void startNextActivity(String type) {
         switch (type) {
             case "logout":
-                mAuth.signOut();
-                Toast.makeText(getContext(), R.string.home_logout, Toast.LENGTH_LONG).show();
                 Intent myIntent = new Intent(getActivity(), MainActivity.class);
                 startActivity(myIntent);
                 break;

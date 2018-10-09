@@ -19,7 +19,7 @@ import java.util.Date;
 
 import butterknife.BindView;
 
-public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ViewHolderExerciceList extends RecyclerView.ViewHolder implements View.OnClickListener {
     private TextView mtextViewExerciceLabel;
     private TextView mtextViewExerciceGoal;
     private TextView mtextViewExerciceNbOfWords;
@@ -57,7 +57,7 @@ public class ExerciceListViewHolder extends RecyclerView.ViewHolder implements V
     }
 
     //itemView est la vue correspondante à 1 ligne de la liste
-    public ExerciceListViewHolder(View itemView) {
+    public ViewHolderExerciceList(View itemView) {
         super(itemView);
         //Associations vues/valeurs
         mtextViewExerciceLabel = (TextView) itemView.findViewById(R.id.exercice_label);

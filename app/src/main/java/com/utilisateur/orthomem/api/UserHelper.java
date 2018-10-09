@@ -61,12 +61,7 @@ public class UserHelper {
                 });
 
     }
-/*
-    public static Task<Void> createUser(String uid, String username) {
-        User userToCreate = new User(uid, username);
-        return UserHelper.getUsersCollection().document(uid).set(userToCreate);
-    }
-*/
+
     // --- GET ---
 
     public static Task<DocumentSnapshot> getUser(String uid){
@@ -99,27 +94,10 @@ public class UserHelper {
                 });
         }
 
-/*
-    // --- UPDATE ---
-
-    public static Task<Void> updateUsername(String username, String uid) {
-        return UserHelper.getUsersCollection().document(uid).update("username", username);
-    }
-
-    public static Task<Void> updateIsMentor(String uid, Boolean isOrtho) {
-        return UserHelper.getUsersCollection().document(uid).update("isortho", isOrtho);
-    }
-*/
     // --- DELETE ---
 
     public static Task<Void> deleteFavorite(String uid, String Exerciceid) {
         return UserHelper.getFavoritesCollection(uid).document(Exerciceid).delete();
 
     }
-
-    public static Task<Void> deleteUser(String uid) {
-        return UserHelper.getUsersCollection().document(uid).delete();
-    }
-
-
 }

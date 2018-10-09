@@ -34,8 +34,9 @@ public class HomeFragment extends Fragment {
 
     /**********
      *
-     * 1. Connextion par email en dur à la bdd à l'aide de l'API AUTHENTICATION et Information du statut de la tentative de connexion l'utilisateur par TOAST
-     * 2.
+     * 1. Connexion par email en dur à la bdd à l'aide de l'API AUTHENTICATION (2 options orthophoniste ou patient
+     * 2. Information du résultat de la tentative de connexion l'utilisateur par TOAST
+     * 3. Affichage du menu de navigation en fonction du type de profil connecté
      *
      **********/
 
