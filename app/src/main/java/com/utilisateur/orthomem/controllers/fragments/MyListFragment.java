@@ -36,10 +36,6 @@ public class MyListFragment extends Fragment {
     private TextView mCreadateTextView;
     private TextView mGoalTextView;
     private FirebaseFirestore mBdd;
-    /*
-        @BindView (R.id.my_toolbar)
-        Toolbar toolbar ;
-    */
 
     public MyListFragment() {/*Required empty public constructor*/}
 
@@ -54,21 +50,6 @@ public class MyListFragment extends Fragment {
         @Override
         public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
             super.onViewCreated(view, savedInstanceState);
-
-            /*
-            ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-            this.getActivity().setSupportActionBar(toolbar);
-
-            setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
-
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finish();
-                }
-            });
-*/
 
             mTitleTextView = view.findViewById(R.id.mylist_title);
             mStatusTextView = view.findViewById(R.id.mylist_status);

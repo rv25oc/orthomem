@@ -1,12 +1,10 @@
 package com.utilisateur.orthomem.controllers.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,7 +23,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreSettings;
 import com.utilisateur.orthomem.R;
 import com.utilisateur.orthomem.model.User;
 
@@ -37,8 +34,9 @@ public class HomeFragment extends Fragment {
 
     /**********
      *
-     * 1. Connextion par email en dur à la bdd à l'aide de l'API AUTHENTICATION et Information du statut de la tentative de connexion l'utilisateur par TOAST
-     * 2.
+     * 1. Connexion par email en dur à la bdd à l'aide de l'API AUTHENTICATION (2 options orthophoniste ou patient
+     * 2. Information du résultat de la tentative de connexion l'utilisateur par TOAST
+     * 3. Affichage du menu de navigation en fonction du type de profil connecté
      *
      **********/
 
@@ -60,7 +58,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_home, container, false);
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
     @Override

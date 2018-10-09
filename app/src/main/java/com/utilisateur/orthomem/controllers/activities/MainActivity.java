@@ -71,6 +71,9 @@ public class MainActivity extends /*FragmentActivity*/ AppCompatActivity {
                     Log.w(TAG, "Navigation case : mylists");
                     //showFragment(new MyListsFragment());
 
+                    // TEST PAYSAGE / PORTRAIT
+                    // getWindow().getDecorView().findViewById(android.R.id.content).getLayoutParams();
+
                     configureAndShowDetailFragment(); // Gestion des vues en mode paysage >600dp
                     if (myListFragment == null || !myListFragment.isVisible()) {
                         showFragment(new MyListsFragment());

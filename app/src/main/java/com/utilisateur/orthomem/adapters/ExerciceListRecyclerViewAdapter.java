@@ -6,40 +6,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.utilisateur.orthomem.R;
-import com.utilisateur.orthomem.controllers.activities.ExerciceListViewHolder;
+import com.utilisateur.orthomem.controllers.activities.ViewHolderExerciceList;
 import com.utilisateur.orthomem.model.Exercice;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<ExerciceListViewHolder> {
+public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<ViewHolderExerciceList> {
 
     private ArrayList<Exercice> mExercicesList;
     private FavoriteIconListener mCallback;
 
-    // - - - - - - - - -
-    // GESTION DU VIEWHOLDER
-    // - - - - - - - - -
-
     @NonNull
     @Override
-    public ExerciceListViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
-        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_row,viewGroup,false);
-        return new ExerciceListViewHolder(itemView);
-
-        //ExerciceListViewHolder mExerciceListViewHolder = new ExerciceListViewHolder(itemView);
-        //return mExerciceListViewHolder;
+    public ViewHolderExerciceList onCreateViewHolder(@NonNull ViewGroup viewGroup, int viewType) {
+        View itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.recyclerview_exercice_row,viewGroup,false);
+        return new ViewHolderExerciceList(itemView);
     }
 
     @Override
     public int getItemCount() {return mExercicesList.size();}
 
     public Exercice getExerciceFromPosition(int position){return this.mExercicesList.get(position);}
-
-
-    // - - - - - - - - -
-    // GESTION DU LISTENER FAVORITICONE
-    // - - - - - - - - -
 
     public interface FavoriteIconListener {
         void onClickFavoriteIcon(int position);
@@ -51,7 +38,7 @@ public class ExerciceListRecyclerViewAdapter extends RecyclerView.Adapter<Exerci
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExerciceListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolderExerciceList holder, int position) {
         Exercice exercice = mExercicesList.get(position);
         holder.bind(exercice);
         holder.updateWithExercice(exercice, this.mCallback);

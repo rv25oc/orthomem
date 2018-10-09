@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +33,6 @@ import java.util.Date;
 
 
 public class MyListsFragment extends Fragment
-            /*implements View.OnClickListener*/
             implements ExerciceListRecyclerViewAdapter.FavoriteIconListener {
 
     /*
@@ -58,7 +56,7 @@ public class MyListsFragment extends Fragment
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_mylists, container, false);
+        return inflater.inflate(R.layout.fragment_mylists, container, false);
      }
 
     @Override
@@ -93,7 +91,6 @@ public class MyListsFragment extends Fragment
                                 Log.w(TAG, mydocument.getId() + " => | " + mydocument.getData());
                                 mydocument.getData();
 
-
                                 //final Exercice myExercice = mExos.get(mExos.size()-1);
                                 final ArrayList<String> myIdsList = new ArrayList<>();
 
@@ -110,7 +107,14 @@ public class MyListsFragment extends Fragment
 
                                                 myIdsList.add(mydocument2.get("wordid").toString());
                                             }
+
+                                            //TEST DE FAVORIS
+
+                                            Date mydate = mydocument.getDate("creadate");
+                                            myExos.add(new Exercice(mydocument.getId(),mydocument.get("label").toString(),mydocument.get("goal").toString(), mydate, myIdsList));
+                                            mStatusTextView.setText(myExos.size()+getResources().getString(R.string.mylists_nbofexercices));
                                             Log.w(TAG, " mydocument2 myIdsList.size()  : "+myIdsList.size());
+                                            mAdapter.notifyDataSetChanged();
                                         }
                                         else {
                                             Log.w(TAG, "(task2) Error getting DocumentSnapshot ExerciceWords", task2.getException());
@@ -118,13 +122,7 @@ public class MyListsFragment extends Fragment
                                         }
                                     }
                                 });
-
-                                Date mydate = mydocument.getDate("creadate");
-
-                                myExos.add(new Exercice(mydocument.getId(),mydocument.get("label").toString(),mydocument.get("goal").toString(), mydate, myIdsList));
-                                mStatusTextView.setText(myExos.size()+getResources().getString(R.string.mylists_nbofexercices));
                             }
-                            mAdapter.notifyDataSetChanged();
                         } else {
                             Log.w(TAG, "(task1) Error getting DocumentSnapshot Exercices.", task1.getException());
                             mStatusTextView.setText("ko1");
@@ -136,7 +134,7 @@ public class MyListsFragment extends Fragment
     }
 
     private void configureOnClickRecyclerView(){
-        ItemClickSupport.addTo(mRecyclerView, R.layout.recyclerview_row)
+        ItemClickSupport.addTo(mRecyclerView, R.layout.recyclerview_exercice_row)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -151,10 +149,6 @@ public class MyListsFragment extends Fragment
     public void onClickFavoriteIcon(int position) {
 
         Exercice FavoriteExercice = mAdapter.getExerciceFromPosition(position);
-        Toast.makeText(getContext(), "You are trying to favorite an exercice : "+FavoriteExercice.getLabel(), Toast.LENGTH_SHORT).show();
-
-        //String mystr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_favorite_white_24dp, null).toString();
-        //Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
 
         mAuth = FirebaseAuth.getInstance();
         if (mAuth.getCurrentUser() != null) {
@@ -166,6 +160,5 @@ public class MyListsFragment extends Fragment
         Intent myIntent = new Intent(this.getActivity(), MyListActivity.class);
         myIntent.putExtra("EXERCICE", exercice);
         startActivity(myIntent);
-
     }
 }

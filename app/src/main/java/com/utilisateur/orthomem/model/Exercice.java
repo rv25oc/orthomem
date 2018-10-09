@@ -14,6 +14,7 @@ public class Exercice implements Serializable {
     private ArrayList<String> exercicewords;
     private Date creadate;
 
+    public Exercice() {}
 
     public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date exerciceCreadate, ArrayList<String> wordsIdList) {
         this.id = exerciceId;
@@ -23,21 +24,6 @@ public class Exercice implements Serializable {
         this.exercicewords = wordsIdList;
     }
 
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, ArrayList<String> wordsIdList) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-        this.exercicewords = wordsIdList;
-    }
-
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-    }
-
-    public Exercice() {
-    }
 
     //getters & setters
     public String getId() {
@@ -77,48 +63,3 @@ public class Exercice implements Serializable {
     public void setCreadate(Date creadate) { this.creadate = creadate;}
 
 }
-
-
-/*
-
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, List<String> wordsIdList,String ownerId ) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-        this.exercicewords = wordsIdList;
-        this.ownerid = ownerId;
-    }
-
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date creadate) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-        this.creadate = creadate;
-    }
-
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date creadate, String ownerid) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-        this.creadate = creadate;
-    }
-
-    public Exercice(String exerciceId, String exerciceLabel, String exerciceGoal, Date creadate, String ownerid, List<String> wordsIdList) {
-        this.id = exerciceId;
-        this.label = exerciceLabel;
-        this.goal = exerciceGoal;
-        this.creadate = creadate;
-        this.ownerid = ownerid;
-        this.exercicewords = wordsIdList;
-    }
-
-
-    private String ownerid;
-    public String getOwnerid() {
-        return ownerid;
-    }
-
-    public void setOwnerid(String ownerid) {
-        this.ownerid = ownerid;
-    }
-*/

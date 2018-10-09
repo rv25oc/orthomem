@@ -27,10 +27,8 @@ title __API's Class Diagram__\n
           {static} + addFavorite()
           {static} + getUser()
           {static} + getFavorites()
-          {static} + isFavorite()
-          {static} + deleteFavorite()
-          {static} + deleteUser()
           {static} + toogleFavorite()
+          {static} + deleteFavorite()
       }
     }
   }

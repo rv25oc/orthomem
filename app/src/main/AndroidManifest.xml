@@ -47,6 +47,5 @@
                         android:value=".controllers.activities.AddListActivity" />
             </activity>
 
-        <activity android:name=".controllers.activities.LoginActivity"  />
     </application>
 </manifest>

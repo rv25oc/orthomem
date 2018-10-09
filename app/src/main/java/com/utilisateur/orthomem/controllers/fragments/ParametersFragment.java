@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.utilisateur.orthomem.R;
-import com.utilisateur.orthomem.controllers.activities.HomeActivity;
+import com.utilisateur.orthomem.controllers.activities.MainActivity;
 
 
 public class ParametersFragment extends Fragment {
@@ -29,8 +29,7 @@ public class ParametersFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_parameters, container, false);
-
+        return inflater.inflate(R.layout.fragment_parameters, container, false);
     }
 
     @Override
@@ -51,9 +50,7 @@ public class ParametersFragment extends Fragment {
     private void startNextActivity(String type) {
         switch (type) {
             case "logout":
-                mAuth.signOut();
-                Toast.makeText(getContext(), R.string.home_logout, Toast.LENGTH_LONG).show();
-                Intent myIntent = new Intent(getActivity(), HomeActivity.class);
+                Intent myIntent = new Intent(getActivity(), MainActivity.class);
                 startActivity(myIntent);
                 break;
         }

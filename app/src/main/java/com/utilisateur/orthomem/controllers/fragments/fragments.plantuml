@@ -6,7 +6,6 @@ title __FRAGMENTS's Class Diagram__\n
     package com.utilisateur.orthomem.controllers.fragments {
       class AddListFragment {
           {static} + MYWORDS_ACTIVITY_REQUEST_CODE : int
-          {static} - TAG : String
           - mLabel_EditText : EditText
           - mGoal_EditText : EditText
           - mNbOfSyllabes_SeekBar : SeekBar
@@ -283,7 +282,7 @@ title __FRAGMENTS's Class Diagram__\n
           + MyListFragment()
           + onCreateView()
           + onViewCreated()
-          - convertDateToHour()
+          - convertDate()
           - getWordsFromLexique()
       }
     }

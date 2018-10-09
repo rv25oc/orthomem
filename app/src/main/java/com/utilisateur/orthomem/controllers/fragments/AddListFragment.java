@@ -28,7 +28,6 @@ public class AddListFragment extends Fragment {
     //Cf. https://github.com/codingdemos/MultichoiceTutorial/blob/master/app/src/main/java/com/example/multichoicetutorial/MainActivity.java
 
     public static final int MYWORDS_ACTIVITY_REQUEST_CODE =222;
-    private static final String TAG = "";
     private EditText mLabel_EditText;
     private EditText mGoal_EditText;
     private SeekBar mNbOfSyllabes_SeekBar;
@@ -45,7 +44,7 @@ public class AddListFragment extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_addlist, container, false);
+        return inflater.inflate(R.layout.fragment_addlist, container, false);
 
     }
 
@@ -60,6 +59,7 @@ public class AddListFragment extends Fragment {
             if (data != null) {
                 Bundle extras = data.getExtras();
                 mListIds = extras.getStringArrayList("NEWIDS");
+
 
                 if(mListIds != null && mListIds.size()>0){
                     mSelected_id_TextView.setText(getResources().getString(R.string.addlist_selectedids_start) + Integer.toString(mListIds.size()) + getString(R.string.addlist_selectedids_end));
@@ -100,6 +100,13 @@ public class AddListFragment extends Fragment {
         mSelected_label_TextView = view.findViewById(R.id.addlist_selectedlabels);
         mSubmitButton = view.findViewById(R.id.addlist_submit_button);
 
+/*
+        //mListIds = new ArrayList<>();
+        mListIds.add("TY2rZbDprdaWqCjIRMe7");
+        mListIds.add("gpjLgiC7uqyaP6lhHBZi");
+        mListIds.add("DvnDT5v5hpZqZ0L8x7R7");
+*/
+
         if(mListIds.size()>0){
             mSubmitButton.setBackground(getResources().getDrawable(R.drawable.orthobutton));
             mSubmitButton.setTextColor(getResources().getColor(R.color.black));
@@ -113,10 +120,8 @@ public class AddListFragment extends Fragment {
 
         mBdd = FirebaseFirestore.getInstance();
 
-        //mListIds = new ArrayList<>(Arrays.asList("TY2rZbDprdaWqCjIRMe7", "gpjLgiC7uqyaP6lhHBZi", "DvnDT5v5hpZqZ0L8x7R7"));
 
         mSelectionButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View view) {startNextActivity("select");
             }
@@ -140,7 +145,7 @@ public class AddListFragment extends Fragment {
                 break;
             case "submit":
                 ExerciceHelper.createExercice(mLabel_EditText.getText().toString(), mGoal_EditText.getText().toString(), mListIds);
-                showToast(mLabel_EditText.getText().toString() + " bien ajouté.");
+                showToast(mLabel_EditText.getText().toString() + " bien ajoutée.");
                 Intent myintent = new Intent(getActivity(), MyListsActivity.class);
                 startActivity(myintent);
                 break;
@@ -150,4 +155,5 @@ public class AddListFragment extends Fragment {
     private void showToast(String message){
         Toast.makeText(getContext(), message, Toast.LENGTH_LONG).show();
     }
+
 }

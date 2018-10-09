@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -14,12 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,7 +29,6 @@ import com.utilisateur.orthomem.utils.ItemClickSupport;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Objects;
 
 
 public class FavoriteFragment extends Fragment
@@ -50,15 +46,13 @@ public class FavoriteFragment extends Fragment
     private String mUserID = "";
     private String mUserLabel = "";
 
-    public FavoriteFragment() {
-        // Required empty public constructor
-    }
+    public FavoriteFragment() {/* Required empty public constructor*/}
 
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_favorite, container, false);
+        return inflater.inflate(R.layout.fragment_favorite, container, false);
     }
 
 
@@ -71,11 +65,7 @@ public class FavoriteFragment extends Fragment
         mBdd = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
-        //String str = (String) UserHelper.getUser(mAuth.getUid()).getResult().getData().get("label").toString();
-        //mTitleTextView.append(str);
-
         mFavoritesExos = LoadFavoritesExos(); //Charger la RecyclerView avec la collection d'Exercices stockée sur Firebase
-        Toast.makeText(getContext(), "mFavoriteExos.size() =  " + mFavoritesExos.size(), Toast.LENGTH_LONG).show();
         Log.w(TAG, "mFavoriteExos " + mFavoritesExos.size());
 
         mRecyclerView = view.findViewById(R.id.favorites_recyclerview);
@@ -131,6 +121,7 @@ public class FavoriteFragment extends Fragment
                                                                         //mStatusTextView.append(" | " + mydocument3.get("wordid").toString().substring(0, 3));
                                                                     }
                                                                     Log.w(TAG, " mydocument2 myIdsList.size()  : " + myIdsList.size());
+                                                                    mAdapter.notifyDataSetChanged();
                                                                 } else {
                                                                     Log.w(TAG, "(task3) Error getting DocumentSnapshot ExerciceWords", task3.getException());
                                                                     mStatusTextView.setText("ko3");
@@ -142,7 +133,6 @@ public class FavoriteFragment extends Fragment
                                                         //Toast.makeText(getContext(), "myExos.size() =  " + myExos.size(), Toast.LENGTH_SHORT).show();
                                                         mStatusTextView.setText(myExos.size() + getResources().getString(R.string.mylists_nbofexercices));
                                                     }
-                                                    mAdapter.notifyDataSetChanged();
                                                 } else {
                                                     Log.w(TAG, "(task2) Error getting DocumentSnapshot Exercices", task2.getException());
                                                     mStatusTextView.setText("ko2");
@@ -156,12 +146,11 @@ public class FavoriteFragment extends Fragment
                         }
                     }
                 });
-
         return myExos;
     }
 
     private void configureOnClickRecyclerView() {
-        ItemClickSupport.addTo(mRecyclerView, R.layout.recyclerview_row)
+        ItemClickSupport.addTo(mRecyclerView, R.layout.recyclerview_exercice_row)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
@@ -176,10 +165,7 @@ public class FavoriteFragment extends Fragment
     public void onClickFavoriteIcon(int position) {
 
         Exercice FavoriteExercice = mAdapter.getExerciceFromPosition(position);
-        Toast.makeText(getContext(), "You are trying to favorite an exercice : " + FavoriteExercice.getLabel(), Toast.LENGTH_SHORT).show();
 
-        String mystr = ResourcesCompat.getDrawable(getResources(), R.drawable.ic_favorite_white_24dp, null).toString();
-        Toast.makeText(getContext(), "myString : " + mystr, Toast.LENGTH_SHORT).show();
         if (mAuth.getCurrentUser() != null) {
             UserHelper.toogleFavorite(mAuth.getCurrentUser().getUid(), FavoriteExercice.getId());
         }
@@ -189,6 +175,5 @@ public class FavoriteFragment extends Fragment
         Intent myIntent = new Intent(this.getActivity(), MyListActivity.class);
         myIntent.putExtra("EXERCICE", exercice);
         startActivity(myIntent);
-
     }
 }
